@@ -1,5 +1,13 @@
 var app=angular.module("myapp",["ngRoute"]);
 
+app.value('MessageValues',{
+    thoughtData : "Thought for the Day",
+    infoData : "Info for the Day",
+    funData : "Fun for the Day",
+    messageData : "Message for the Day",
+    newsData : "News for the Day"
+});
+
 app.config(function($routeProvider)
     {
         $routeProvider.when('/about',{
@@ -45,18 +53,18 @@ app.controller("appController", function ($scope) {
 });
 
 
-app.controller("thoughtController", function ($scope) {
-$scope.messagetitle='Thought for the Day';
+app.controller("thoughtController", function ($scope,MessageValues) {
+$scope.messagetitle=MessageValues.thoughtData;
 });
 
-app.controller("infoController", function ($scope) {
-    $scope.messagetitle='Info for the Day';
+app.controller("infoController", function ($scope,MessageValues) {
+    $scope.messagetitle=MessageValues.infoData;
 });
 
-app.controller("funController", function ($scope) {
-    $scope.messagetitle='Fun for the Day';
+app.controller("funController", function ($scope,MessageValues) {
+    $scope.messagetitle=MessageValues.funData;
 });
 
-app.controller("messageController", function ($scope) {
-    $scope.messagetitle='Message for the Day';
+app.controller("messageController", function ($scope,MessageValues) {
+    $scope.messagetitle=MessageValues.messageData;
 });

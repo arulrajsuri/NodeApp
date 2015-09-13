@@ -11,6 +11,45 @@ var users = require('./routes/users');
 var home = require('./routes/home');
 */
 
+console.log("Connecting the Core Database");
+var mongoose= require('mongoose');
+
+
+mongoose.connect('mongodb://localhost/mydatabase');
+var db = mongoose.connection;
+
+
+
+db.on('error', console.error);
+var connecting=function(){
+
+  return db.once('open', function() {
+    console.log("connected to Database");
+  });
+
+}
+
+connecting();
+
+var messageSchema =  mongoose.Schema(
+    {
+      message : String ,
+      createDate : Number,
+      likes : Number,
+      messageCategory: String
+    }
+)
+
+var Message =mongoose.model('Message',messageSchema);
+
+var thoughtMessage=new Message(
+    {
+      message : ' '
+
+    }
+
+)
+
 
 var app = express();
 

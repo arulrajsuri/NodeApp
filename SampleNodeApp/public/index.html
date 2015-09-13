@@ -12,17 +12,26 @@
 
     <style>
         body{
+
+            padding-top:40px;
+/*
             background-image:url("images/sky.jpg");
+*/
            }
 .jumbotron
 {
-    background: transparent;
-    color: honeydew;
+    /*background: transparent;
+    color: honeydew;*/
 }
         .message
         {
             font-size: x-large
         }
+
+.view
+{
+
+}
     </style>
 
 </head>
@@ -61,19 +70,21 @@
         <a href="#/message" class="btn btn-info btn-lg">Message for the day</a>
         <a href="#/info" class="btn btn-danger btn-lg">Info for the day</a>
         <a href="#/fun" class="btn btn-warning btn-lg">Fun for the day</a>
+        <a href="#/news" class="btn btn-success btn-lg">News for the day</a>
         <a href="#/thought" class="btn btn-primary btn-lg">Thought for the day</a>
     </div> <!--End btn group -->
 
     </div> <!--End container -->
-
 </div> <!--End jumbotron -->
 
 <div class="container text-center">
 <div class="row">
 <div class="col-md-8 col-md-offset-2">
-    <ng-view></ng-view>
+    <ng-view ></ng-view>
+
 </div>
 </div>
+
 
 
 </div>

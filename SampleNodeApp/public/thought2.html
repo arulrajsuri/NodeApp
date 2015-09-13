@@ -1,4 +1,4 @@
-<h1>{{messagetitle}}</h1>
+<h2>{{messagetitle}}</h2>
 <div class="carousel slide" data-ride="carousel" id="panel-carousel">
 
     <ol class="carousel-indicators">
@@ -11,20 +11,40 @@
 
         <div class="item active">
           <div class="panel panel-info">
-                 <div class="panel-body">
+                 <div class="panel-body" style="max-height: 300px; min-height: 300px;background-color: cornflowerblue">
                      <p class="message">
-                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nunc risus, semper a tempus sit amet, volutpat ut mauris. Morbi lacinia leo in dolor lobortis, vitae tempus odio vehicula. Suspendisse sit amet venenatis eros. Aenean placerat ut nibh sed ultrices. Fusce non massa tincidunt, finibus felis at, euismod ex. Ut mollis, erat at vehicula bibendum, sem augue mollis urna, sed porta nulla mi eu leo. Nullam non nisi dignissim, imperdiet libero sit amet, mollis leo.
+                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nunc risus, semper a tempus sit amet, volutpat ut mauris. Morbi lacinia leo in dolor lobortis, vitae tempus odio vehicula.
                      </p>
+
+                         <a href="#" class="btn btn-info btn-lg pull-left" style="margin-top: 90px;">
+                             <span class="glyphicon glyphicon-thumbs-up"></span>Like <span class="badge">42</span>
+                         </a>
+
+
                  </div>
+
           </div>
+        </div>
+
+        <div class="item">
+            <div class="panel panel-info">
+                <div class="panel-body" style="max-height: 300px;min-height: 300px;background-color: red">
+                    <p class="message">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                    <a href="#" class="btn btn-info btn-lg pull-left">
+                        <span class="glyphicon glyphicon-thumbs-up"></span> Like<br><span>2</span>
+                    </a>
+                </div>
+            </div>
 
         </div>
 
         <div class="item">
             <div class="panel panel-info">
-                <div class="panel-body">
+                <div class="panel-body" style="max-height: 300px;min-height: 300px;background-color: darkorange">
                     <p class="message">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nunc risus, semper a tempus sit amet, volutpat ut mauris. Morbi lacinia leo in dolor lobortis, vitae tempus odio vehicula. Suspendisse sit amet venenatis eros. Aenean placerat ut nibh sed ultrices. Fusce non massa tincidunt, finibus felis at, euismod ex. Ut mollis, erat at vehicula bibendum, sem augue mollis urna, sed porta nulla mi eu leo. Nullam non nisi dignissim, imperdiet libero sit amet, mollis leo.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nunc risus, semper a tempus sit amet, volutpat ut mauris.
                     </p>
                 </div>
             </div>
@@ -32,17 +52,7 @@
 
         <div class="item">
             <div class="panel panel-info">
-                <div class="panel-body">
-                    <p class="message">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nunc risus, semper a tempus sit amet, volutpat ut mauris. Morbi lacinia leo in dolor lobortis, vitae tempus odio vehicula. Suspendisse sit amet venenatis eros. Aenean placerat ut nibh sed ultrices. Fusce non massa tincidunt, finibus felis at, euismod ex. Ut mollis, erat at vehicula bibendum, sem augue mollis urna, sed porta nulla mi eu leo. Nullam non nisi dignissim, imperdiet libero sit amet, mollis leo.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="panel panel-info">
-                <div class="panel-body">
+                <div class="panel-body" style="max-height: 300px;min-height: 300px;background-color: #b92c28;overflow-y: scroll">
                     <p class="message">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nunc risus, semper a tempus sit amet, volutpat ut mauris. Morbi lacinia leo in dolor lobortis, vitae tempus odio vehicula. Suspendisse sit amet venenatis eros. Aenean placerat ut nibh sed ultrices. Fusce non massa tincidunt, finibus felis at, euismod ex. Ut mollis, erat at vehicula bibendum, sem augue mollis urna, sed porta nulla mi eu leo. Nullam non nisi dignissim, imperdiet libero sit amet, mollis leo.
                     </p>
@@ -51,12 +61,18 @@
         </div>
     </div>
 
-    <button data-target="#panel-carousel" class="left carousel-control" data-slide="prev">
+   <!-- <button data-target="#panel-carousel" class="left carousel-control" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left"></span>
     </button>
 
     <button data-target="#panel-carousel" class="right carousel-control" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right"></span>
-    </button>
+    </button>-->
+</div>
+
+<div>
+
+    <h2>{{comment}}</h2>
+
 </div>
 
