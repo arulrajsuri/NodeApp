@@ -1,0 +1,117 @@
+<div ng-controller="adminController">
+<div class="container" ng-hide="adminHideValue" >
+    <div class="row">
+        <div class="col-lg-10">
+            <h1 class="visible-lg hidden-* text-center text-capitalize">{{messagetitle}}</h1>
+            <h2 class="visible-md hidden-* text-center text-capitalize">{{messagetitle}}</h2>
+            <h3 class="visible-sm hidden-* text-center text-capitalize">{{messagetitle}}</h3>
+            <h4 class="visible-xs hidden-* text-center text-capitalize"style="margin-top:30px">{{messagetitle}}</h4>
+            <form action="" class="form-horizontal">
+                <div class="form-group">
+                    <label for="message-type" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">
+                        <h3 class="visible-lg hidden-*"><strong>Message Type</strong></h3>
+                        <h4 class="visible-md hidden-*"><strong>Message Type</strong></h4>
+                        <h5 class="visible-sm hidden-*"><strong>Message Type</strong></h5>
+                        <h5 class="visible-xs hidden-*"><strong>Message Type</strong></h5>
+                    </label>
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                        <select class="form-control" id="message-type">
+                            <option>Message for the Day</option>
+                            <option>Info for the Day</option>
+                            <option>Fun for the Day</option>
+                            <option>News for the Day</option>
+                            <option>Thought for the Day</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message-data" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">
+                        <h3 class="visible-lg hidden-*"><strong>Content</strong></h3>
+                        <h4 class="visible-md hidden-*"><strong>Content</strong></h4>
+                        <h5 class="visible-sm hidden-*"><strong>Content</strong></h5>
+                        <h5 class="visible-xs hidden-*"><strong>Content</strong></h5>
+
+                    </label>
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                        <textarea class="form-control" id="message-data" row="7"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="datepick" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">
+                        <h3 class="visible-lg hidden-*"><strong>Date</strong></h3>
+                        <h4 class="visible-md hidden-*"><strong>Date</strong></h4>
+                        <h5 class="visible-sm hidden-*"><strong>Date</strong></h5>
+                        <h5 class="visible-xs hidden-*"><strong>Date</strong></h5>
+                    </label>
+
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                        <display></display>
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-0 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+                        <div class="visible-lg hidden-*"><button class="btn btn-success" style="width: 300px;font-size: x-large"><strong>Add</strong></button></div>
+                        <div class="visible-md hidden-*" style="width:inherit;margin-left:15px"><button class="btn btn-success" style="width: 200px;font-size: larger"><strong>Add</strong></button></div>
+                        <div class="visible-sm hidden-*" style="width:inherit;margin-left:10px"><button class="btn btn-success" style="width: 200px;font-size: large"><strong>Add</strong></button></div>
+                        <div class="visible-xs hidden-*" style="width:inherit;margin-left:36px" ><button class="btn btn-success" style="width: 100px;font-size: small"><strong>Add</strong></button></div>
+                    </div>
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+
+
+    <!--<div class="col-lg-8">
+        <h1 class="visible-lg hidden-*">{{messagetitle}}</h1>
+        <h2 class="visible-md hidden-*">{{messagetitle}}</h2>
+        <h3 class="visible-sm hidden-*">{{messagetitle}}</h3>
+        <h4 class="visible-xs hidden-*">{{messagetitle}}</h4>
+<form action="" class="form-horizontal">
+<div class="form-group">
+<label for="message-type" class="col-lg-3 control-label">Message Type</label>
+<div class="col-lg-9">
+    <select class="form-control" id="message-type">
+        <option>Message for the Day</option>
+        <option>Info for the Day</option>
+        <option>Fun for the Day</option>
+        <option>News for the Day</option>
+        <option>Thought for the Day</option>
+    </select>
+</div>
+</div>
+
+    <div class="form-group">
+        <label for="message-data" class="col-lg-3 control-label">Message Data</label>
+        <div class="col-lg-9">
+        <textarea class="form-control" id="message-data" row="7"></textarea>
+        </div>
+    </div>
+
+        <div class="form-group">
+            <label for="datepick" class="col-lg-3 control-label">Date</label>
+            <div class="col-lg-9">
+                <display></display>
+            </div>
+        </div>
+    <div class="form-group">
+
+        <div class="col-lg-9 pull-right">
+            <button class="btn btn-success" style="width: 120px">Add</button>
+        </div>
+    </div>
+
+
+
+</form>
+
+</div>-->
+        <!--<h1 >{{messagetitle}}</h1>-->
+
+</div>
+</div>

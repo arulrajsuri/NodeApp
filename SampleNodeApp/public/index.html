@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title></title>
 
     <script src="angularLib/angular.js"></script>
@@ -9,7 +9,15 @@
     <script src="angularApp/myapp.js"></script>
     <link href="bootstrapLib/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="bootstrapLib/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="jquery-ui-1.11.4/jquery-ui.css">
+    <script src="jqueryLib/jquery-1.11.3.js"></script>
+    <script src="jquery-ui-1.11.4/jquery-ui.js"></script>
 
+    <script type="text/javascript">
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>
     <style>
         body{
 
@@ -37,7 +45,7 @@
 </head>
 <body ng-app="myapp">
 <nav class="navbar navbar-inverse navbar-fixed-top">
-   <div class="container">
+   <div class="container" ng-controller="navController">
        <div class="navbar-header">
            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
                <span class="icon-bar"></span>
@@ -52,47 +60,49 @@
 
          <ul class="nav navbar-nav">
             <li><a href="#contact">Home</a> </li>
-            <li><a href="#about">About</a> </li>
+            <li><a href="#about" ng-click="checkJumbo()">About</a> </li>
             <li><a href="#contact">Contact</a> </li>
-            </ul>
-
+         </ul>
+           <a href="#admin"><button class="btn navbar-btn btn-warning pull-right" ng-click="adminToggle();">Admin</button></a>
         </div>  <!--End nav -->
 
    </div> <!--End container -->
 </nav><!--End navbar -->
 
-<div class="jumbotron">
+<div ng-controller="jumboController">
+<div class="jumbotron" ng-hide="hideValue">
 
     <div class="container text-center">
     <h1>What Went Well</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nunc risus, semper a tempus sit amet, volutpat ut mauris. Morbi lacinia leo in dolor lobortis, vitae tempus odio vehicula. Suspendisse sit amet venenatis eros.</p>
-    <div class="btn-group">
-        <a href="#/message" class="btn btn-info btn-lg">Message for the day</a>
-        <a href="#/info" class="btn btn-danger btn-lg">Info for the day</a>
-        <a href="#/fun" class="btn btn-warning btn-lg">Fun for the day</a>
-        <a href="#/news" class="btn btn-success btn-lg">News for the day</a>
-        <a href="#/thought" class="btn btn-primary btn-lg">Thought for the day</a>
-    </div> <!--End btn group -->
+        <div class="row">
+            <div class="col-lg-12 col-lg-offset-0">
+                <div class="btn-group-justified">
+                   <div class="col-md-4 "><a href="#/message" class="btn btn-info btn-lg btn-block">Message for the day</a></div>
+                    <div class="col-md-2 "> <a href="#/info" class="btn btn-danger btn-lg btn-block">Info for the day</a></div>
+                        <div class="col-md-2 "><a href="#/fun" class="btn btn-warning btn-lg btn-block">Fun for the day</a></div>
+                            <div class="col-md-2 "><a href="#/news" class="btn btn-success btn-lg btn-block">News for the day</a></div>
+                                <div class="col-md-2"><a href="#/thought" class="btn btn-primary btn-lg btn-block"><span style="margin-left:-14px">Thought for the day</span></a></div>
+                </div> <!--End btn group -->
+
+            </div>
+        </div>
 
     </div> <!--End container -->
 </div> <!--End jumbotron -->
-
+</div>
+<!--//col-md-8 col-md-offset-2-->
 <div class="container text-center">
 <div class="row">
-<div class="col-md-8 col-md-offset-2">
-    <ng-view ></ng-view>
-
+<div class="col-lg-10 col-lg-offset-1">
+    <ng-view class="col-lg-offset-0">
+    </ng-view>
+   <!-- <input type='text'  id="datepicker" />-->
 </div>
 </div>
 
-
-
 </div>
 
-
-
-<script src="jqueryLib/jquery-2.1.4.min.js"></script>
 <script src="bootstrapLib/js/bootstrap.js"></script>
-
 </body>
 </html>

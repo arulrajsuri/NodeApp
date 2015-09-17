@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jqueryLib/jquery-1.11.3.js"></script>
+    <script src="jquery-ui-1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="jquery-ui-1.11.4/jquery-ui.css">
+    <script src="angularLib/angular.min.js"> </script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+        var app=angular.module('myapp',[]);
+        app.controller('appController',function($scope)
+        {
+            $scope.myval="Hello World from Angular";
+            $scope.empval={
+                    empname:"",
+                    empdept:""
+            }
+            //$scope.empname="";
+            //$scope.empdept="";
+            $scope.empdata=[];
+            $scope.addemp=function(data){
+                console.log(data);
+                var empobj={
+                    empname:data.empname,
+                    empdept:data.empdept
+                }
+               $scope.empdata.push(empobj);
+                $scope.empval.empname="";
+                $scope.empval.empdept="";
+            }
+        })
+
+        app.directive('sampleDate',function()
+        {
+            return{
+                restrict:'E',
+                templateUrl :"mydirectiveTemplate.html",
+                replace: true,
+                scope:{
+                    sampleval:"=helloval",
+                    myvar:"@myvalue"
+
+                },
+                link:function(scope,element,attrs)
+                {
+                    var count=1;
+                    scope.display= $("#datepicker").datepicker();
+
+
+                    scope.displayPerform= function () {
+                    scope.myvar=count++;
+                    }
+                }
+            }
+
+        })
+    </script>
+</head>
+<body ng-app="myapp" ng-controller="appController">
+<h1>Angular sample file</h1>
+<input type="text" ng-model="empval.empname"><br><br>
+<input type="text" ng-model="empval.empdept"><br>
+<button ng-click="addemp(empval)">Add Employee</button>
+<ul ng-repeat="x in empdata">
+    <li>{{x.empname}}</li>
+</ul>
+<sample-date helloval="myval" myvalue="0"></sample-date>
+
+From Page<input type='text' id="datepicker" />
+</body>
+</html>

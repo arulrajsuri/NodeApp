@@ -5,57 +5,39 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+
+var mongoStart=require('./mongoDBFiles/mongoConnect');
+
+var mongoSchema=require('./mongoDBFiles/mongoSchema');
+
+var mongoModel=require('./mongoDBFiles/mongoModel');
+
+/*var routes = require('./routes/index');
+var users = require('./routes/users');*/
+
+var api = require('./routes/api');
+
 /*
-var home = require('./routes/home');
+var mongoose = require("mongoose");
+mongoose.connect('mongodb://localhost/mydate');
 */
-
-console.log("Connecting the Core Database");
-var mongoose= require('mongoose');
+//var mongoose = require('./db.js');
 
 
-mongoose.connect('mongodb://localhost/mydatabase');
-var db = mongoose.connection;
-
-
+/*var db = mongoose.connection
 
 db.on('error', console.error);
-var connecting=function(){
+db.once('open', function() {
+  // Create your schemas and models here.
+});
 
-  return db.once('open', function() {
-    console.log("connected to Database");
-  });
-
-}
-
-connecting();
-
-var messageSchema =  mongoose.Schema(
-    {
-      message : String ,
-      createDate : Number,
-      likes : Number,
-      messageCategory: String
-    }
-)
-
-var Message =mongoose.model('Message',messageSchema);
-
-var thoughtMessage=new Message(
-    {
-      message : ' '
-
-    }
-
-)
-
+mongoose.connect('mongodb://localhost/mydate');*/
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -65,13 +47,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+//app.use(express.static('public'));
+/*
 app.use('/', routes);
 app.use('/users', users);
+*/
 
+//accessing api ---- > url to routes mapping
+app.use('/api',api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  var err = new Error('Not Available');
   err.status = 404;
   next(err);
 });
