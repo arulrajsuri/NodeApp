@@ -2,8 +2,18 @@ var moongose =require('mongoose');
 var Schema =require('./mongoSchema');
 var Message=moongose.model('Message',Schema.messageSchema);
 var Comment=moongose.model('Comment',Schema.commentSchema);
+var User=moongose.model('User',Schema.userSchema);
 
-var messageInsert=new Message(
+var Models ={
+
+    MessageModel :Message,
+    CommentModel :Comment,
+    UserModel :User
+}
+
+module.exports =Models;
+
+/*var messageInsert=new Message(
     {
         messageType :'T',
         messageData :'xxx',
@@ -17,7 +27,7 @@ messageInsert.save(function(err,data)
         console.log("data inserted");
 
     }
-)
+)*/
 
 /*
 Message.findById({"_id" : "55f824a863b9c6601cac0f6d"},function(err,message)

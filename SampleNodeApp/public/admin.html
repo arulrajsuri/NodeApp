@@ -6,21 +6,21 @@
             <h2 class="visible-md hidden-* text-center text-capitalize">{{messagetitle}}</h2>
             <h3 class="visible-sm hidden-* text-center text-capitalize">{{messagetitle}}</h3>
             <h4 class="visible-xs hidden-* text-center text-capitalize"style="margin-top:30px">{{messagetitle}}</h4>
-            <form action="" class="form-horizontal">
+            <formx class="form-horizontal">
                 <div class="form-group">
                     <label for="message-type" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">
-                        <h3 class="visible-lg hidden-*"><strong>Message Type</strong></h3>
+                        <h3 class="visible-lg hidden-*" style="margin-top:0px"><strong>Message Type</strong></h3>
                         <h4 class="visible-md hidden-*"><strong>Message Type</strong></h4>
                         <h5 class="visible-sm hidden-*"><strong>Message Type</strong></h5>
                         <h5 class="visible-xs hidden-*"><strong>Message Type</strong></h5>
                     </label>
                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                        <select class="form-control" id="message-type">
-                            <option>Message for the Day</option>
-                            <option>Info for the Day</option>
-                            <option>Fun for the Day</option>
-                            <option>News for the Day</option>
-                            <option>Thought for the Day</option>
+                        <select class="form-control" id="message-type" ng-model="optionselected">
+                            <option value="M">Message for the Day</option>
+                            <option value="I">Info for the Day</option>
+                            <option value="F">Fun for the Day</option>
+                            <option value="N">News for the Day</option>
+                            <option value="T">Thought for the Day</option>
                         </select>
                     </div>
                 </div>
@@ -34,37 +34,105 @@
 
                     </label>
                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                        <textarea class="form-control" id="message-data" row="7"></textarea>
+                        <textarea class="form-control" id="message-data" row="7" ng-model="messageData" ng-disabled="cloudinary"></textarea>
+                        <button class="btn btn-primary" ng-if="optionselected=='F'" ng-click="addtocloudinary()">Add image</button>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="datepick" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">
-                        <h3 class="visible-lg hidden-*"><strong>Date</strong></h3>
+                        <h3 class="visible-lg hidden-*" style="margin-top:0px"><strong>Date</strong></h3>
                         <h4 class="visible-md hidden-*"><strong>Date</strong></h4>
                         <h5 class="visible-sm hidden-*"><strong>Date</strong></h5>
                         <h5 class="visible-xs hidden-*"><strong>Date</strong></h5>
                     </label>
 
                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                        <display></display>
+
+
+                        <div>
+                            <div class="input-group date">
+                               <!-- <input type='text' ng-model="datevalue"  display  class="form-control"/>-->
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                <display selected-date="messageDate"></display>
+                            </div>
+                        </div>
+
+
+               <!--         <display selected-date="messageData"></display>-->
                     </div>
+
                 </div>
-                <div class="form-group">
+                <!--<div class="form-group">-->
 
-                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-0 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
-                        <div class="visible-lg hidden-*"><button class="btn btn-success" style="width: 300px;font-size: x-large"><strong>Add</strong></button></div>
-                        <div class="visible-md hidden-*" style="width:inherit;margin-left:15px"><button class="btn btn-success" style="width: 200px;font-size: larger"><strong>Add</strong></button></div>
-                        <div class="visible-sm hidden-*" style="width:inherit;margin-left:10px"><button class="btn btn-success" style="width: 200px;font-size: large"><strong>Add</strong></button></div>
-                        <div class="visible-xs hidden-*" style="width:inherit;margin-left:36px" ><button class="btn btn-success" style="width: 100px;font-size: small"><strong>Add</strong></button></div>
-                    </div>
+
+
+               <!-- </div>-->
+
+
+
+            </formx>
+
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-0 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+                <div class="visible-lg hidden-*"><button class="btn btn-success" ng-disabled="btndisablevalue" ng-click="addMessage()" style="width: 300px;font-size: x-large"><strong>Add</strong></button></div> <span ng-show="alreadyAdded" class="text-danger"><strong>Data has been already added for the selected message type</strong></span>
+                <div class="visible-md hidden-*" style="width:inherit;margin-left:15px"><button class="btn btn-success" ng-disabled="btndisablevalue" ng-click="addMessage()" style="width: 200px;font-size: larger"><strong>Add</strong></button></div>
+                <div class="visible-sm hidden-*" style="width:inherit;margin-left:10px"><button class="btn btn-success" ng-disabled="btndisablevalue" ng-click="addMessage()" style="width: 200px;font-size: large"><strong>Add</strong></button></div>
+                <div class="visible-xs hidden-*" style="width:inherit;margin-left:36px" ><button class="btn btn-success" ng-disabled="btndisablevalue" ng-click="addMessage()" style="width: 100px;font-size: small"><strong>Add</strong></button></div>
+            </div>
+
+
+
+
+
+            <!--<button class="btn" ng-click="addMessage()">Add me</button>-->
+
+        </div>
+
+
+    </div> <br>
+
+   <!-- <div class="container">-->
+        <!--<div class="row">-->
+
+          <!--  <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-0 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">-->
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th class="text-center">Delete</th>
+                            <th class="text-center">Message Type</th>
+                            <th class="text-center">Content</th>
+                            <th class="text-center">Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="x in messageContainer">
+                            <td>{{$index+1}}</td>
+                            <td><button class="btn btn-danger" ng-click="deleteMessage($index)"><span class="glyphicon glyphicon-trash"></span></button></td>
+                            <td>{{x.messageType}}</td>
+                            <td>{{x.messageData}}</td>
+                            <td>{{x.messageDate}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
 
+    <div class="row">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+            <div class="visible-lg hidden-*"><button class="btn btn-primary" ng-disabled="uploadbtndisablevalue"  ng-click="addDataToMongo()" style="width: 300px;font-size: x-large;margin-left:-350px"><strong>Upload Data</strong></button></div>
+            <div class="visible-md hidden-*" style="width:inherit;margin-left:115px"><button class="btn btn-primary"  ng-disabled="uploadbtndisablevalue"  ng-click="addDataToMongo()" style="width: 200px;font-size: larger;margin-left:-350px"><strong>Upload Data</strong></button></div>
+            <div class="visible-sm hidden-*" style="width:inherit;margin-left:130px"><button class="btn btn-primary"  ng-disabled="uploadbtndisablevalue"  ng-click="addDataToMongo()" style="width: 200px;font-size: large;margin-left:-350px"><strong>Upload Data</strong></button></div>
+            <div class="visible-xs hidden-*" style="width:inherit;margin-left:90px" ><button class="btn btn-primary"  ng-disabled="uploadbtndisablevalue"  ng-click="addDataToMongo()" style="width: 100px;font-size: small;margin-left:-150px"><strong>Upload Data</strong></button></div>
 
-
-            </form>
         </div>
     </div>
+
+           <!-- </div>
+
+        </div>-->
+
+    <!--</div>-->
 
 
     <!--<div class="col-lg-8">
@@ -113,5 +181,14 @@
 </div>-->
         <!--<h1 >{{messagetitle}}</h1>-->
 
+
+
+
 </div>
+
+<!--
+<button ng-click="showData()">showData</button>
+-->
+
 </div>
+

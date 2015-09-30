@@ -1,78 +1,154 @@
 <h2>{{messagetitle}}</h2>
-<div class="carousel slide" data-ride="carousel" id="panel-carousel">
+<div ng-controller="thoughtController" ng-init="display()">
+    <div class="carousel slide" data-ride="carousel" id="panel-carousel" data-interval="false">
 
-    <ol class="carousel-indicators">
-        <li data-target="#panel-carousel" data-slide-to="0" class="active"></li>
-        <li data-target="#panel-carousel" data-slide-to="1" ></li>
-        <li data-target="#panel-carousel" data-slide-to="2" ></li>
-        <li data-target="#panel-carousel" data-slide-to="3" ></li>
-    </ol>
-    <div class="carousel-inner">
+        <ol class="carousel-indicators" ng-repeat="x in thoughtContainer">
+            <li ng-class="{active:!$index}" data-target="#panel-carousel" data-slide-to={{$index}} ng-repeat="x in thoughtContainer" ng-click="navigate($index)"></li>
+        </ol>
+        <div class="carousel-inner">
 
-        <div class="item active">
-          <div class="panel panel-info">
-                 <div class="panel-body" style="max-height: 300px; min-height: 300px;background-color: cornflowerblue">
-                     <p class="message">
-                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nunc risus, semper a tempus sit amet, volutpat ut mauris. Morbi lacinia leo in dolor lobortis, vitae tempus odio vehicula.
-                     </p>
+            <div class="item" ng-class="{active:!$index}" ng-repeat="x in thoughtContainer">
+                <div class="panel panel-info">
+                    <div class="panel-body" style="max-height: 300px; min-height: 300px;background-color: cornflowerblue;">
 
-                         <a href="#" class="btn btn-info btn-lg pull-left" style="margin-top: 90px;">
-                             <span class="glyphicon glyphicon-thumbs-up"></span>Like <span class="badge">42</span>
-                         </a>
+                        <div class="visible-lg visible-md">
+                            <div class="message">
+                                <h3>{{x.messageData}}</h3>
+                            </div>
+                        </div>
+
+                        <div class="visible-xs">
+                            <div class="message">
+                                <h5>{{x.messageData}}</h5>
+                            </div>
+                        </div>
+                        <!---->
 
 
-                 </div>
+                    </div>
 
-          </div>
-        </div>
-
-        <div class="item">
-            <div class="panel panel-info">
-                <div class="panel-body" style="max-height: 300px;min-height: 300px;background-color: red">
-                    <p class="message">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                    <a href="#" class="btn btn-info btn-lg pull-left">
-                        <span class="glyphicon glyphicon-thumbs-up"></span> Like<br><span>2</span>
-                    </a>
                 </div>
+
             </div>
 
-        </div>
+            <!--<div class="item">-->
+                <!--<div class="panel panel-info">-->
+                    <!--<div class="panel-body" style="max-height: 300px;min-height: 300px;background-color: red">-->
+                        <!--<p class="message">-->
+                            <!--Lorem ipsum dolor sit amet, consectetur adipiscing elit.-->
+                        <!--</p>-->
+                        <!--<a href="#" class="btn btn-info btn-lg pull-left">-->
+                            <!--<span class="glyphicon glyphicon-thumbs-up"></span> Like<br><span>2</span>-->
+                        <!--</a>-->
+                    <!--</div>-->
+                <!--</div>-->
 
-        <div class="item">
-            <div class="panel panel-info">
-                <div class="panel-body" style="max-height: 300px;min-height: 300px;background-color: darkorange">
-                    <p class="message">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nunc risus, semper a tempus sit amet, volutpat ut mauris.
-                    </p>
-                </div>
-            </div>
-        </div>
+            <!--</div>-->
 
-        <div class="item">
-            <div class="panel panel-info">
-                <div class="panel-body" style="max-height: 300px;min-height: 300px;background-color: #b92c28;overflow-y: scroll">
-                    <p class="message">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nunc risus, semper a tempus sit amet, volutpat ut mauris. Morbi lacinia leo in dolor lobortis, vitae tempus odio vehicula. Suspendisse sit amet venenatis eros. Aenean placerat ut nibh sed ultrices. Fusce non massa tincidunt, finibus felis at, euismod ex. Ut mollis, erat at vehicula bibendum, sem augue mollis urna, sed porta nulla mi eu leo. Nullam non nisi dignissim, imperdiet libero sit amet, mollis leo.
-                    </p>
+          <!--  <div class="item">
+                <div class="panel panel-info">
+                    <div class="panel-body" style="max-height: 300px;min-height: 300px;background-color: darkorange">
+                        <p class="message">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nunc risus, semper a tempus sit amet, volutpat ut mauris.
+                        </p>
+                    </div>
                 </div>
+            </div>-->
+
+           <!-- <div class="item">
+                <div class="panel panel-info">
+                    <div class="panel-body" style="max-height: 300px;min-height: 300px;background-color: #b92c28;overflow-y: scroll">
+                        <p class="message">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nunc risus, semper a tempus sit amet, volutpat ut mauris. Morbi lacinia leo in dolor lobortis, vitae tempus odio vehicula. Suspendisse sit amet venenatis eros. Aenean placerat ut nibh sed ultrices. Fusce non massa tincidunt, finibus felis at, euismod ex. Ut mollis, erat at vehicula bibendum, sem augue mollis urna, sed porta nulla mi eu leo. Nullam non nisi dignissim, imperdiet libero sit amet, mollis leo.
+                        </p>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+        <button  id="bootstrapslider1" data-target="#panel-carousel" class="left carousel-control" data-slide="prev" ng-click="displaypositionprev()">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </button>
+
+        <button  id="bootstrapslider2" data-target="#panel-carousel" class="right carousel-control " data-slide="next" ng-click="displaypositionnext()">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </button>
+        <!-- <button data-target="#panel-carousel" class="left carousel-control" data-slide="prev">
+             <span class="glyphicon glyphicon-chevron-left"></span>
+         </button>
+
+         <button data-target="#panel-carousel" class="right carousel-control" data-slide="next">
+             <span class="glyphicon glyphicon-chevron-right"></span>
+         </button>-->
+    </div>
+
+    <buttton id="mybutton" class="btn btn-info btn-lg pull-left visible-lg visible-md visible-sm hidden-xs " ng-click="addLikes()" >
+        <span class="glyphicon glyphicon-thumbs-up">&nbsp;<span style="color:white;"><b>Likes</b></span>&nbsp;</span><span class="badge" ng-bind="messageLikes"></span>
+    </buttton>
+
+    <buttton class="btn btn-success btn-sm  visible-xs hidden-*" ng-click="addLikes()">
+        <span class="glyphicon glyphicon-thumbs-up">&nbsp;<span style="color:white;"><b>Likes</b></span>&nbsp;</span><span class="badge" ng-bind="messageLikes"></span>
+    </buttton>
+    <!--<div>
+
+        <h2>{{comment}}</h2>
+
+    </div>
+-->
+<div class="col-lg-8 visible-lg"><span><h2><b>Comments</b></h2></span> <br> </div>
+    <div class="col-md-8 visible-md"><span><h2><b>Comments</b></h2></span> <br> </div>
+    <div class="col-sm-8 visible-sm"><span><h3><b>Comments</b></h3></span> <br> </div>
+    <div class="col-xs-8 col-xs-offset-2 visible-xs "><span><h4><b>Comments</b></h4></span> <br> </div>
+
+    <div class="col-lg-8 col-lg-offset-2 visible-lg" ng-hide="loading"><h1><i class="fa fa-spinner fa-pulse"></i></h1></div>
+    <div class="col-md-8 col-md-offset-2 visible-md" ng-hide="loading"><h1><i class="fa fa-spinner fa-pulse"></i></h1></div>
+    <div class="col-sm-8 col-sm-offset-2 visible-sm" ng-hide="loading"><h1><i class="fa fa-spinner fa-pulse"></i></h1></div>
+    <div class="col-xs-8 col-xs-offset-2 visible-xs" ng-hide="loading"><h1><i class="fa fa-spinner fa-pulse"></i></h1></div>
+
+    <div class="panel-group col-lg-6 col-md-6 col-sm-6 col-lg-offset-3 col-md-offset-4 col-sm-offset-4 visible-lg visible-md visible-sm text-justify">
+            <div class="panel panel-primary" ng-repeat="msg in tempcomments">
+                <div class="panel-heading">{{msg.from}}</div>
+                <div class="panel-body">{{msg.body}}</div>
             </div>
+           </div>
+
+    <div class="panel-group  col-xs-12 visible-xs text-justify">
+        <div class="panel panel-primary" ng-repeat="msg in tempcomments">
+            <div class="panel-heading">{{msg.from}}</div>
+            <div class="panel-body">{{msg.body}}</div>
         </div>
     </div>
 
-   <!-- <button data-target="#panel-carousel" class="left carousel-control" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-    </button>
+        <div class="panel-group col-lg-7  col-md-7 col-sm-7 col-lg-offset-3 col-md-offset-3 visible-lg visible-md text-justify">
+        <div class="panel panel-primary">
+            <div class="panel-heading clearfix"> <input ng-model="name" style="color:black" type="text" id="nameInput" placeholder="enter your name..."></div>
+            <div class="panel-body"> <textarea ng-model="msg" id="commentInput" placeholder="enter your Comment..."></textarea></div>
+        <div class="panel-footer"><button class="btn btn-success" ng-click="addFireMessage()">Add Comment</button></div>
+        </div>
+            </div>
 
-    <button data-target="#panel-carousel" class="right carousel-control" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right"></span>
-    </button>-->
+    <div class="panel-group col-xs-12 visible-xs text-justify">
+        <div class="panel panel-primary">
+            <div class="panel-heading clearfix"> <input ng-model="name" style="color:black;width:130px" type="text" id="nameInputt" placeholder="enter your name..."></div>
+            <div class="panel-body"> <textarea ng-model="msg" id="commentInputt" placeholder="enter your Comment..."></textarea></div>
+            <div class="panel-footer"><button class="btn btn-success" ng-click="addFireMessage()">Add Comment</button></div>
+        </div>
+    </div>
+
+        <!--<div class="example-chat-toolbar">
+            <label for="nameInput">Username:</label>
+            <input ng-model="name" type="text" id="nameInput" placeholder="enter a username..."> <br>
+            <label for="nameInput">Comment:</label>
+
+        </div>-->
+        <br>
+
+<!--
+        <footer>
+
+            &lt;!&ndash;<input ng-model="msg" ng-keydown="addFireMessage($event)" type="text" id="messageInput"  placeholder="Type a message...">&ndash;&gt;
+        </footer>-->
+    <!--<h1>asfafdg</h1>-->
+
+<!--<h1><i class="fa fa-cog fa-spin"></i></h1>-->
+
 </div>
-
-<div>
-
-    <h2>{{comment}}</h2>
-
-</div>
-

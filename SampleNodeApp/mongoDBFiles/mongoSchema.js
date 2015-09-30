@@ -25,6 +25,13 @@ var Schema =
                 }
             ]
         }
+    ),
+    userSchema:new mongoose.Schema(
+        {
+            userName :String,
+            passWord :String
+        }
+
     )
 
 

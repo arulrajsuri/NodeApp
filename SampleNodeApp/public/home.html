@@ -6,8 +6,21 @@
     <script src="angularLib/angular.min.js"> </script>
 <script>
     var app=angular.module("myapp",[]);
+
+    app.directive("imagedisplay",function()
+    {
+        var directive={};
+        directive.restrict ='E';
+        directive.scope={};
+        directive.scope.imageurl="=imgurlvalue";
+        directive.template=
+        directive.replace=true;
+    })
 app.controller("myAppController",function($scope,$http)
         {
+            $scope.empval={};
+            $scope.imageurl="http://res.cloudinary.com/whatventwell-herokuapps-com/image/upload/h_400,w_800/";
+            $scope.samplevalue="METAIMG$bw4n7zmipiuqmsqbe7ua.jpg";
             $scope.empdata={};
             $scope.addtoMongo=function()
             {
@@ -42,6 +55,16 @@ app.controller("myAppController",function($scope,$http)
     EmpDept <input type="text" ng-model="empdata.empdept"> <br>
     <input type="button" value="Add" ng-click="adduser()">
     <h1>{{userdata}}</h1>
+<div ng-switch="samplevalue.substring(0,8)">
+    <div ng-switch-when="METAIMG$">
+        <img src={{imageurl.concat(samplevalue.substring(8))}} >
+    </div>
+    <div ng-switch-default>
+        <h1>Message</h1>
+    </div>
+</div>
+
+    <span ng-bind="samplevalue.length"></span>
 </div>
 
 
