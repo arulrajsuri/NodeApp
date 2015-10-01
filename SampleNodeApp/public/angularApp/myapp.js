@@ -281,7 +281,7 @@ var userval={
     password:$scope.password
 }
         $http({
-            url: 'https://whatventwell.herokuapp.com/api/adduser',
+            url: 'https://whatventwell.herokuapp.com/api/userlogin',
             method: "POST",
             data:{myval: userval}
 //https://whatventwell.herokuapp.com/   http://localhost:3000/api/adduser

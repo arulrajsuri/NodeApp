@@ -32,8 +32,8 @@
       <file leaf-file-name="myapp.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/angularApp/myapp.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.17110266">
-              <caret line="736" column="0" selection-start-line="736" selection-start-column="0" selection-end-line="736" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.36756757">
+              <caret line="283" column="66" selection-start-line="283" selection-start-column="66" selection-end-line="283" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -42,8 +42,8 @@
       <file leaf-file-name="api.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/api.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.965517">
-              <caret line="130" column="43" selection-start-line="130" selection-start-column="43" selection-end-line="130" selection-end-column="43" />
+            <state vertical-scroll-proportion="-13.4827585">
+              <caret line="136" column="24" selection-start-line="136" selection-start-column="15" selection-end-line="136" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -676,12 +676,12 @@
       <workItem from="1442487197445" duration="29136000" />
       <workItem from="1442688832505" duration="57317000" />
       <workItem from="1443035195440" duration="12628000" />
-      <workItem from="1443274382029" duration="72126000" />
+      <workItem from="1443274382029" duration="72695000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="205145000" />
+    <option name="totallyTimeSpent" value="205714000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1192,14 +1192,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.965517">
-          <caret line="130" column="43" selection-start-line="130" selection-start-column="43" selection-end-line="130" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1216,10 +1208,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.4827585">
+          <caret line="136" column="24" selection-start-line="136" selection-start-column="15" selection-end-line="136" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/angularApp/myapp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17110266">
-          <caret line="736" column="0" selection-start-line="736" selection-start-column="0" selection-end-line="736" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.36756757">
+          <caret line="283" column="66" selection-start-line="283" selection-start-column="66" selection-end-line="283" selection-end-column="66" />
           <folding />
         </state>
       </provider>
