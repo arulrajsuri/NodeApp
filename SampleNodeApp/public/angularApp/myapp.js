@@ -281,10 +281,10 @@ var userval={
     password:$scope.password
 }
         $http({
-            url: 'http://localhost:3000/api/userlogin',
+            url: 'https://whatventwell.herokuapp.com/api/adduser',
             method: "POST",
             data:{myval: userval}
-
+//https://whatventwell.herokuapp.com/   http://localhost:3000/api/adduser
         }).success(
             function(data,status,headers,config)
             {
@@ -381,11 +381,11 @@ app.controller("thoughtController", function ($scope,$http,$timeout,$firebaseArr
         console.log($scope.thoughtContainer[currentIndex].messageData);
         $http(
             {
-                url: 'http://localhost:3000/api/likes',
+                url: 'https://whatventwell.herokuapp.com/api/likes',
                 method: "POST",
                 data : {messageID :messageid }
             }
-
+//https://whatventwell.herokuapp.com/   http://localhost:3000
         ).success(
             function(data,status,headers,config)
             {
@@ -494,7 +494,7 @@ console.log($scope.thoughtContainer[currentIndex].messageData);
     {
         $http(
             {
-                url: 'http://localhost:3000/api/posts?message=T',
+                url: 'https://whatventwell.herokuapp.com/api/posts?message=T',
                 method: "GET"
             }
 
@@ -626,7 +626,7 @@ app.controller("infoController", function ($scope,$http,$timeout,$firebaseArray,
         console.log($scope.thoughtContainer[currentIndex].messageData);
         $http(
             {
-                url: 'http://localhost:3000/api/likes',
+                url: 'https://whatventwell.herokuapp.com/api/likes',
                 method: "POST",
                 data : {messageID :messageid }
             }
@@ -739,7 +739,7 @@ app.controller("infoController", function ($scope,$http,$timeout,$firebaseArray,
     {
         $http(
             {
-                url: 'http://localhost:3000/api/posts?message=I',
+                url: 'https://whatventwell.herokuapp.com/api/posts?message=I',
                 method: "GET"
             }
 
@@ -877,7 +877,7 @@ app.controller("newsController", function ($scope,$http,$timeout,$firebaseArray,
         console.log($scope.thoughtContainer[currentIndex].messageData);
         $http(
             {
-                url: 'http://localhost:3000/api/likes',
+                url: 'https://whatventwell.herokuapp.com/api/likes',
                 method: "POST",
                 data : {messageID :messageid }
             }
@@ -990,7 +990,7 @@ app.controller("newsController", function ($scope,$http,$timeout,$firebaseArray,
     {
         $http(
             {
-                url: 'http://localhost:3000/api/posts?message=N',
+                url: 'https://whatventwell.herokuapp.com/api/posts?message=N',
                 method: "GET"
             }
 
@@ -1126,7 +1126,7 @@ app.controller("funController", function ($scope,$http,$timeout,$firebaseArray,M
         console.log($scope.thoughtContainer[currentIndex].messageData);
         $http(
             {
-                url: 'http://localhost:3000/api/likes',
+                url: 'https://whatventwell.herokuapp.com/api/likes',
                 method: "POST",
                 data : {messageID :messageid }
             }
@@ -1239,7 +1239,7 @@ app.controller("funController", function ($scope,$http,$timeout,$firebaseArray,M
     {
         $http(
             {
-                url: 'http://localhost:3000/api/posts?message=F',
+                url: 'https://whatventwell.herokuapp.com/api/posts?message=F',
                 method: "GET"
             }
 
@@ -1372,7 +1372,7 @@ app.controller("messageController", function ($scope,$http,$timeout,$firebaseArr
         console.log($scope.thoughtContainer[currentIndex].messageData);
         $http(
             {
-                url: 'http://localhost:3000/api/likes',
+                url: 'https://whatventwell.herokuapp.com/api/likes',
                 method: "POST",
                 data : {messageID :messageid }
             }
@@ -1485,7 +1485,7 @@ app.controller("messageController", function ($scope,$http,$timeout,$firebaseArr
     {
         $http(
             {
-                url: 'http://localhost:3000/api/posts?message=M',
+                url: 'https://whatventwell.herokuapp.com/api/posts?message=M',
                 method: "GET"
             }
 
@@ -1631,7 +1631,7 @@ var removedData=false;
     {
 
         $http({
-            url: 'http://localhost:3000/api/posts',
+            url: 'https://whatventwell.herokuapp.com/api/posts',
             method: "POST",
             data:{myval: $scope.messageContainer}
 
