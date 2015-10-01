@@ -161,8 +161,8 @@ userquery.exec(
         console.log("dsfsdgfsdg");
         console.log(messages);
         res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With");
-        res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+        res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, x-requested-with");
+        res.header("Access-Control-Allow-Methods", "GET, PUT, POST ,OPTIONS");
         res.send(messages);
     }
 );
