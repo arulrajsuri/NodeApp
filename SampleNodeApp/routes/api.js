@@ -34,8 +34,10 @@ console.log(req.body.messageID);
             message.save(function(err,data)
                 {
                     console.log("saved");
-
-                res.send(data);
+                    res.header("Access-Control-Allow-Origin", "*");
+                    res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With");
+                    res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+                    res.send(data);
                 }
             )
 
@@ -58,6 +60,9 @@ console.log("Request Paramater::"+req.query.message);
         messagequery.exec(
             function(err,messages)
             {
+                res.header("Access-Control-Allow-Origin", "*");
+                res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With");
+                res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
                 res.send(messages);
             }
         )
@@ -91,6 +96,9 @@ router.route('/posts').post(
                 console.log(value.messageType);
             }
         )
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With");
+        res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
         res.send(insertobj);
        /*objarray.forEach(entry)
         {*/
@@ -152,7 +160,10 @@ userquery.exec(
     {
         console.log("dsfsdgfsdg");
         console.log(messages);
-res.send(messages);
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With");
+        res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+        res.send(messages);
     }
 );
 
