@@ -162,6 +162,7 @@ userquery.exec(
         console.log(messages);
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, x-requested-with");
+        res.header("Access-Control-Max-Age","99999");
         res.header("Access-Control-Allow-Methods", "GET, PUT, POST ,OPTIONS");
         res.send(messages);
     }
