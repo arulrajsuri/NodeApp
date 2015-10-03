@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var cors =require('cors');
 
 var mongoStart=require('./mongoDBFiles/mongoConnect');
 
@@ -35,6 +36,7 @@ mongoose.connect('mongodb://localhost/mydate');*/
 
 var app = express();
 
+app.use(cors());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

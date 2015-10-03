@@ -283,7 +283,6 @@ var userval={
         $http({
             url: 'https://whatventwell.herokuapp.com/api/userlogin',
             method: "POST",
-            headers:{'Content-Type': 'application/x-www-form-urlencoded'},
             data:{myval: userval}
 //https://whatventwell.herokuapp.com/   http://localhost:3000/api/adduser
         }).success(
