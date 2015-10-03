@@ -339,6 +339,7 @@ app.controller("thoughtController", function ($scope,$http,$timeout,$firebaseArr
                 $scope.firethoughtmessagescount = $firebaseArray(ref);
                 $scope.firethoughtmessagescount.$add({from:$scope.name,body:$scope.msg});
                 $scope.firethoughtmessagescount = $firebaseArray(getCommentsRef());
+                $scope.tempcomments=$scope.firethoughtmessagescount[$scope.firethoughtmessagescount.$indexFor(messageidvalue)];
 
                 $scope.name="";
                 $scope.msg="";
@@ -349,6 +350,8 @@ app.controller("thoughtController", function ($scope,$http,$timeout,$firebaseArr
                 $scope.firethoughtmessagescount = $firebaseArray(ref);
                 $scope.firethoughtmessagescount.$add({from:$scope.name,body:$scope.msg});
                 $scope.firethoughtmessagescount = $firebaseArray(getCommentsRef());
+                $scope.tempcomments=$scope.firethoughtmessagescount[$scope.firethoughtmessagescount.$indexFor(messageidvalue)];
+
                 $scope.name="";
                 $scope.msg="";
 
@@ -584,6 +587,7 @@ app.controller("infoController", function ($scope,$http,$timeout,$firebaseArray,
             $scope.firethoughtmessagescount = $firebaseArray(ref);
             $scope.firethoughtmessagescount.$add({from:$scope.name,body:$scope.msg});
             $scope.firethoughtmessagescount = $firebaseArray(getCommentsRef());
+            $scope.tempcomments=$scope.firethoughtmessagescount[$scope.firethoughtmessagescount.$indexFor(messageidvalue)];
 
             $scope.name="";
             $scope.msg="";
@@ -594,6 +598,8 @@ app.controller("infoController", function ($scope,$http,$timeout,$firebaseArray,
             $scope.firethoughtmessagescount = $firebaseArray(ref);
             $scope.firethoughtmessagescount.$add({from:$scope.name,body:$scope.msg});
             $scope.firethoughtmessagescount = $firebaseArray(getCommentsRef());
+            $scope.tempcomments=$scope.firethoughtmessagescount[$scope.firethoughtmessagescount.$indexFor(messageidvalue)];
+
             $scope.name="";
             $scope.msg="";
 
@@ -835,7 +841,7 @@ app.controller("newsController", function ($scope,$http,$timeout,$firebaseArray,
             $scope.firethoughtmessagescount = $firebaseArray(ref);
             $scope.firethoughtmessagescount.$add({from:$scope.name,body:$scope.msg});
             $scope.firethoughtmessagescount = $firebaseArray(getCommentsRef());
-
+            $scope.tempcomments=$scope.firethoughtmessagescount[$scope.firethoughtmessagescount.$indexFor(messageidvalue)];
             $scope.name="";
             $scope.msg="";
 
@@ -845,6 +851,7 @@ app.controller("newsController", function ($scope,$http,$timeout,$firebaseArray,
             $scope.firethoughtmessagescount = $firebaseArray(ref);
             $scope.firethoughtmessagescount.$add({from:$scope.name,body:$scope.msg});
             $scope.firethoughtmessagescount = $firebaseArray(getCommentsRef());
+            $scope.tempcomments=$scope.firethoughtmessagescount[$scope.firethoughtmessagescount.$indexFor(messageidvalue)];
             $scope.name="";
             $scope.msg="";
 
@@ -1084,7 +1091,7 @@ app.controller("funController", function ($scope,$http,$timeout,$firebaseArray,M
             $scope.firethoughtmessagescount = $firebaseArray(ref);
             $scope.firethoughtmessagescount.$add({from:$scope.name,body:$scope.msg});
             $scope.firethoughtmessagescount = $firebaseArray(getCommentsRef());
-
+            $scope.tempcomments=$scope.firethoughtmessagescount[$scope.firethoughtmessagescount.$indexFor(messageidvalue)];
             $scope.name="";
             $scope.msg="";
 
@@ -1094,6 +1101,7 @@ app.controller("funController", function ($scope,$http,$timeout,$firebaseArray,M
             $scope.firethoughtmessagescount = $firebaseArray(ref);
             $scope.firethoughtmessagescount.$add({from:$scope.name,body:$scope.msg});
             $scope.firethoughtmessagescount = $firebaseArray(getCommentsRef());
+            $scope.tempcomments=$scope.firethoughtmessagescount[$scope.firethoughtmessagescount.$indexFor(messageidvalue)];
             $scope.name="";
             $scope.msg="";
 
@@ -1330,6 +1338,7 @@ app.controller("messageController", function ($scope,$http,$timeout,$firebaseArr
             $scope.firethoughtmessagescount = $firebaseArray(ref);
             $scope.firethoughtmessagescount.$add({from:$scope.name,body:$scope.msg});
             $scope.firethoughtmessagescount = $firebaseArray(getCommentsRef());
+            $scope.tempcomments=$scope.firethoughtmessagescount[$scope.firethoughtmessagescount.$indexFor(messageidvalue)];
 
             $scope.name="";
             $scope.msg="";
@@ -1340,6 +1349,8 @@ app.controller("messageController", function ($scope,$http,$timeout,$firebaseArr
             $scope.firethoughtmessagescount = $firebaseArray(ref);
             $scope.firethoughtmessagescount.$add({from:$scope.name,body:$scope.msg});
             $scope.firethoughtmessagescount = $firebaseArray(getCommentsRef());
+            $scope.tempcomments=$scope.firethoughtmessagescount[$scope.firethoughtmessagescount.$indexFor(messageidvalue)];
+
             $scope.name="";
             $scope.msg="";
 
