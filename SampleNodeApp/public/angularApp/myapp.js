@@ -330,16 +330,17 @@ app.controller("thoughtController", function ($scope,$http,$timeout,$firebaseArr
     $scope.addFireMessage = function() {
         var currentIndex = $('div.active').index();
         var messageidvalue=$scope.thoughtContainer[currentIndex]._id
+/*
         console.log($scope.firethoughtmessagescount.$indexFor(messageidvalue));
 
             console.log("name::"+$scope.name);
+*/
             if($scope.firethoughtmessagescount.$indexFor(messageidvalue)==-1)
             {
                 var ref = new Firebase("https://samplenodeapp.firebaseio.com/thoughts/comments/"+messageidvalue);
                 $scope.firethoughtmessagescount = $firebaseArray(ref);
                 $scope.firethoughtmessagescount.$add({from:$scope.name,body:$scope.msg});
                 $scope.firethoughtmessagescount = $firebaseArray(getCommentsRef());
-                $scope.tempcomments=$scope.firethoughtmessagescount[$scope.firethoughtmessagescount.$indexFor(messageidvalue)];
 
                 $scope.name="";
                 $scope.msg="";
@@ -350,7 +351,6 @@ app.controller("thoughtController", function ($scope,$http,$timeout,$firebaseArr
                 $scope.firethoughtmessagescount = $firebaseArray(ref);
                 $scope.firethoughtmessagescount.$add({from:$scope.name,body:$scope.msg});
                 $scope.firethoughtmessagescount = $firebaseArray(getCommentsRef());
-                $scope.tempcomments=$scope.firethoughtmessagescount[$scope.firethoughtmessagescount.$indexFor(messageidvalue)];
 
                 $scope.name="";
                 $scope.msg="";
@@ -523,31 +523,34 @@ console.log($scope.thoughtContainer[currentIndex].messageData);
                 );*/
          //   console.log("success");
 
+                ref = new Firebase("https://samplenodeapp.firebaseio.com/thoughts/comments");
+                $scope.firethoughtmessagescount=$firebaseArray(ref);
+                console.log("")
+                $scope.firethoughtmessagescount.$loaded().then(function()
+                {
+
+                    var sample=$('div.active').index();
+                    // console.log("commentsCount display initilization:"+$scope.firethoughtmessagescount.length);
+                    for(var i=0;i<$scope.firethoughtmessagescount.length;i++)
+                    {
+                        console.log("$scope.firethoughtmessagescount[i].$id:"+$scope.firethoughtmessagescount[i].$id);
+                        if($scope.firethoughtmessagescount[i].$id==$scope.thoughtContainer[sample]._id)
+                        {
+                            $scope.tempcomments=$scope.firethoughtmessagescount[i];
+                            break;
+                        }
+                        else
+                        {
+                            $scope.tempcomments="";
+                        }
+
+                    }
+                    $scope.loading=true;
+                })
 
             }
         );
-        ref = new Firebase("https://samplenodeapp.firebaseio.com/thoughts/comments");
-        $scope.firethoughtmessagescount=$firebaseArray(ref);
-      $scope.firethoughtmessagescount.$loaded().then(function()
-      {
-          var sample=$('div.active').index();
-         // console.log("commentsCount display initilization:"+$scope.firethoughtmessagescount.length);
-          for(var i=0;i<$scope.firethoughtmessagescount.length;i++)
-          {
-              console.log("$scope.firethoughtmessagescount[i].$id:"+$scope.firethoughtmessagescount[i].$id);
-              if($scope.firethoughtmessagescount[i].$id==$scope.thoughtContainer[sample]._id)
-              {
-                  $scope.tempcomments=$scope.firethoughtmessagescount[i];
-                  break;
-              }
-              else
-              {
-                  $scope.tempcomments="";
-              }
 
-          }
-          $scope.loading=true;
-      })
 
 
 
@@ -587,7 +590,6 @@ app.controller("infoController", function ($scope,$http,$timeout,$firebaseArray,
             $scope.firethoughtmessagescount = $firebaseArray(ref);
             $scope.firethoughtmessagescount.$add({from:$scope.name,body:$scope.msg});
             $scope.firethoughtmessagescount = $firebaseArray(getCommentsRef());
-            $scope.tempcomments=$scope.firethoughtmessagescount[$scope.firethoughtmessagescount.$indexFor(messageidvalue)];
 
             $scope.name="";
             $scope.msg="";
@@ -598,7 +600,6 @@ app.controller("infoController", function ($scope,$http,$timeout,$firebaseArray,
             $scope.firethoughtmessagescount = $firebaseArray(ref);
             $scope.firethoughtmessagescount.$add({from:$scope.name,body:$scope.msg});
             $scope.firethoughtmessagescount = $firebaseArray(getCommentsRef());
-            $scope.tempcomments=$scope.firethoughtmessagescount[$scope.firethoughtmessagescount.$indexFor(messageidvalue)];
 
             $scope.name="";
             $scope.msg="";
@@ -771,31 +772,35 @@ app.controller("infoController", function ($scope,$http,$timeout,$firebaseArray,
                  );*/
                 //   console.log("success");
 
+                ref = new Firebase("https://samplenodeapp.firebaseio.com/info/comments");
+                $scope.firethoughtmessagescount=$firebaseArray(ref);
+                console.log("Fetching comments");
+                $scope.firethoughtmessagescount.$loaded().then(function()
+                {
+                    console.log("Fetching comments loading");
+                    var sample=$('div.active').index();
+                    // console.log("commentsCount display initilization:"+$scope.firethoughtmessagescount.length);
+                    for(var i=0;i<$scope.firethoughtmessagescount.length;i++)
+                    {
+                        console.log("$scope.firethoughtmessagescount[i].$id:"+$scope.firethoughtmessagescount[i].$id);
+                        if($scope.firethoughtmessagescount[i].$id==$scope.thoughtContainer[sample]._id)
+                        {
+                            console.log("Fetching comments loaded");
+                            $scope.tempcomments=$scope.firethoughtmessagescount[i];
+                            break;
+                        }
+                        else
+                        {
+                            $scope.tempcomments="";
+                        }
+
+                    }
+                    $scope.loading=true;
+                })
+
 
             }
         );
-        ref = new Firebase("https://samplenodeapp.firebaseio.com/info/comments");
-        $scope.firethoughtmessagescount=$firebaseArray(ref);
-        $scope.firethoughtmessagescount.$loaded().then(function()
-        {
-            var sample=$('div.active').index();
-            // console.log("commentsCount display initilization:"+$scope.firethoughtmessagescount.length);
-            for(var i=0;i<$scope.firethoughtmessagescount.length;i++)
-            {
-                console.log("$scope.firethoughtmessagescount[i].$id:"+$scope.firethoughtmessagescount[i].$id);
-                if($scope.firethoughtmessagescount[i].$id==$scope.thoughtContainer[sample]._id)
-                {
-                    $scope.tempcomments=$scope.firethoughtmessagescount[i];
-                    break;
-                }
-                else
-                {
-                    $scope.tempcomments="";
-                }
-
-            }
-            $scope.loading=true;
-        })
 
 
 
@@ -841,7 +846,7 @@ app.controller("newsController", function ($scope,$http,$timeout,$firebaseArray,
             $scope.firethoughtmessagescount = $firebaseArray(ref);
             $scope.firethoughtmessagescount.$add({from:$scope.name,body:$scope.msg});
             $scope.firethoughtmessagescount = $firebaseArray(getCommentsRef());
-            $scope.tempcomments=$scope.firethoughtmessagescount[$scope.firethoughtmessagescount.$indexFor(messageidvalue)];
+
             $scope.name="";
             $scope.msg="";
 
@@ -851,7 +856,7 @@ app.controller("newsController", function ($scope,$http,$timeout,$firebaseArray,
             $scope.firethoughtmessagescount = $firebaseArray(ref);
             $scope.firethoughtmessagescount.$add({from:$scope.name,body:$scope.msg});
             $scope.firethoughtmessagescount = $firebaseArray(getCommentsRef());
-            $scope.tempcomments=$scope.firethoughtmessagescount[$scope.firethoughtmessagescount.$indexFor(messageidvalue)];
+
             $scope.name="";
             $scope.msg="";
 
@@ -1022,32 +1027,32 @@ app.controller("newsController", function ($scope,$http,$timeout,$firebaseArray,
                  }
                  );*/
                 //   console.log("success");
+                ref = new Firebase("https://samplenodeapp.firebaseio.com/news/comments");
+                $scope.firethoughtmessagescount=$firebaseArray(ref);
+                $scope.firethoughtmessagescount.$loaded().then(function()
+                {
+                    var sample=$('div.active').index();
+                    // console.log("commentsCount display initilization:"+$scope.firethoughtmessagescount.length);
+                    for(var i=0;i<$scope.firethoughtmessagescount.length;i++)
+                    {
+                        console.log("$scope.firethoughtmessagescount[i].$id:"+$scope.firethoughtmessagescount[i].$id);
+                        if($scope.firethoughtmessagescount[i].$id==$scope.thoughtContainer[sample]._id)
+                        {
+                            $scope.tempcomments=$scope.firethoughtmessagescount[i];
+                            break;
+                        }
+                        else
+                        {
+                            $scope.tempcomments="";
+                        }
+
+                    }
+                    $scope.loading=true;
+                })
 
 
             }
         );
-        ref = new Firebase("https://samplenodeapp.firebaseio.com/news/comments");
-        $scope.firethoughtmessagescount=$firebaseArray(ref);
-        $scope.firethoughtmessagescount.$loaded().then(function()
-        {
-            var sample=$('div.active').index();
-            // console.log("commentsCount display initilization:"+$scope.firethoughtmessagescount.length);
-            for(var i=0;i<$scope.firethoughtmessagescount.length;i++)
-            {
-                console.log("$scope.firethoughtmessagescount[i].$id:"+$scope.firethoughtmessagescount[i].$id);
-                if($scope.firethoughtmessagescount[i].$id==$scope.thoughtContainer[sample]._id)
-                {
-                    $scope.tempcomments=$scope.firethoughtmessagescount[i];
-                    break;
-                }
-                else
-                {
-                    $scope.tempcomments="";
-                }
-
-            }
-            $scope.loading=true;
-        })
 
 
 
@@ -1091,7 +1096,7 @@ app.controller("funController", function ($scope,$http,$timeout,$firebaseArray,M
             $scope.firethoughtmessagescount = $firebaseArray(ref);
             $scope.firethoughtmessagescount.$add({from:$scope.name,body:$scope.msg});
             $scope.firethoughtmessagescount = $firebaseArray(getCommentsRef());
-            $scope.tempcomments=$scope.firethoughtmessagescount[$scope.firethoughtmessagescount.$indexFor(messageidvalue)];
+
             $scope.name="";
             $scope.msg="";
 
@@ -1101,7 +1106,7 @@ app.controller("funController", function ($scope,$http,$timeout,$firebaseArray,M
             $scope.firethoughtmessagescount = $firebaseArray(ref);
             $scope.firethoughtmessagescount.$add({from:$scope.name,body:$scope.msg});
             $scope.firethoughtmessagescount = $firebaseArray(getCommentsRef());
-            $scope.tempcomments=$scope.firethoughtmessagescount[$scope.firethoughtmessagescount.$indexFor(messageidvalue)];
+
             $scope.name="";
             $scope.msg="";
 
@@ -1273,31 +1278,33 @@ app.controller("funController", function ($scope,$http,$timeout,$firebaseArray,M
                  );*/
                 //   console.log("success");
 
+                ref = new Firebase("https://samplenodeapp.firebaseio.com/fun/comments");
+                $scope.firethoughtmessagescount=$firebaseArray(ref);
+                $scope.firethoughtmessagescount.$loaded().then(function()
+                {
+                    var sample=$('div.active').index();
+                    // console.log("commentsCount display initilization:"+$scope.firethoughtmessagescount.length);
+                    for(var i=0;i<$scope.firethoughtmessagescount.length;i++)
+                    {
+                        console.log("$scope.firethoughtmessagescount[i].$id:"+$scope.firethoughtmessagescount[i].$id);
+                        if($scope.firethoughtmessagescount[i].$id==$scope.thoughtContainer[sample]._id)
+                        {
+                            $scope.tempcomments=$scope.firethoughtmessagescount[i];
+                            break;
+                        }
+                        else
+                        {
+                            $scope.tempcomments="";
+                        }
+
+                    }
+                    $scope.loading=true;
+                })
+
 
             }
         );
-        ref = new Firebase("https://samplenodeapp.firebaseio.com/fun/comments");
-        $scope.firethoughtmessagescount=$firebaseArray(ref);
-        $scope.firethoughtmessagescount.$loaded().then(function()
-        {
-            var sample=$('div.active').index();
-            // console.log("commentsCount display initilization:"+$scope.firethoughtmessagescount.length);
-            for(var i=0;i<$scope.firethoughtmessagescount.length;i++)
-            {
-                console.log("$scope.firethoughtmessagescount[i].$id:"+$scope.firethoughtmessagescount[i].$id);
-                if($scope.firethoughtmessagescount[i].$id==$scope.thoughtContainer[sample]._id)
-                {
-                    $scope.tempcomments=$scope.firethoughtmessagescount[i];
-                    break;
-                }
-                else
-                {
-                    $scope.tempcomments="";
-                }
 
-            }
-            $scope.loading=true;
-        })
 
 
 
@@ -1338,7 +1345,6 @@ app.controller("messageController", function ($scope,$http,$timeout,$firebaseArr
             $scope.firethoughtmessagescount = $firebaseArray(ref);
             $scope.firethoughtmessagescount.$add({from:$scope.name,body:$scope.msg});
             $scope.firethoughtmessagescount = $firebaseArray(getCommentsRef());
-            $scope.tempcomments=$scope.firethoughtmessagescount[$scope.firethoughtmessagescount.$indexFor(messageidvalue)];
 
             $scope.name="";
             $scope.msg="";
@@ -1349,7 +1355,6 @@ app.controller("messageController", function ($scope,$http,$timeout,$firebaseArr
             $scope.firethoughtmessagescount = $firebaseArray(ref);
             $scope.firethoughtmessagescount.$add({from:$scope.name,body:$scope.msg});
             $scope.firethoughtmessagescount = $firebaseArray(getCommentsRef());
-            $scope.tempcomments=$scope.firethoughtmessagescount[$scope.firethoughtmessagescount.$indexFor(messageidvalue)];
 
             $scope.name="";
             $scope.msg="";
@@ -1495,58 +1500,65 @@ app.controller("messageController", function ($scope,$http,$timeout,$firebaseArr
 
     $scope.display=function()
     {
-        $http(
-            {
-                url: 'https://whatventwell.herokuapp.com/api/posts?message=M',
-                method: "GET"
-            }
-
-        ).success(
-            function(data,status,headers,config)
-            {
-
-
-                /* var obj={
-                 thoughtObj : data
-                 }*/
-                $scope.thoughtContainer=data;
-
-                console.log($scope.thoughtContainer.length);
-                var sample=$('div.active').index()+1;
-                $scope.messageLikes=$scope.thoughtContainer[sample].messageLikes;
-
-                /* data.forEach(function(value)
-                 {
-                 console.log(value.messageData);
-                 }
-                 );*/
-                //   console.log("success");
-
-
-            }
-        );
-        ref = new Firebase("https://samplenodeapp.firebaseio.com/messages/comments");
-        $scope.firethoughtmessagescount=$firebaseArray(ref);
-        $scope.firethoughtmessagescount.$loaded().then(function()
+        console.log("checking the message array count:::"+$scope.thoughtContainer.length);
+        if($scope.thoughtContainer.length==0)
         {
-            var sample=$('div.active').index();
-            // console.log("commentsCount display initilization:"+$scope.firethoughtmessagescount.length);
-            for(var i=0;i<$scope.firethoughtmessagescount.length;i++)
-            {
-                console.log("$scope.firethoughtmessagescount[i].$id:"+$scope.firethoughtmessagescount[i].$id);
-                if($scope.firethoughtmessagescount[i].$id==$scope.thoughtContainer[sample]._id)
+            $http(
                 {
-                    $scope.tempcomments=$scope.firethoughtmessagescount[i];
-                    break;
-                }
-                else
-                {
-                    $scope.tempcomments="";
+                    url: 'https://whatventwell.herokuapp.com/api/posts?message=M',
+                    method: "GET"
                 }
 
-            }
-            $scope.loading=true;
-        })
+            ).success(
+                function(data,status,headers,config)
+                {
+
+
+                    /* var obj={
+                     thoughtObj : data
+                     }*/
+                    $scope.thoughtContainer=data;
+
+                    console.log($scope.thoughtContainer.length);
+                    var sample=$('div.active').index()+1;
+                    $scope.messageLikes=$scope.thoughtContainer[sample].messageLikes;
+
+                    /* data.forEach(function(value)
+                     {
+                     console.log(value.messageData);
+                     }
+                     );*/
+                    //   console.log("success");
+
+
+                    ref = new Firebase("https://samplenodeapp.firebaseio.com/messages/comments");
+                    $scope.firethoughtmessagescount=$firebaseArray(ref);
+                    $scope.firethoughtmessagescount.$loaded().then(function()
+                    {
+                        var sample=$('div.active').index();
+                        // console.log("commentsCount display initilization:"+$scope.firethoughtmessagescount.length);
+                        for(var i=0;i<$scope.firethoughtmessagescount.length;i++)
+                        {
+                            console.log("$scope.firethoughtmessagescount[i].$id:"+$scope.firethoughtmessagescount[i].$id);
+                            if($scope.firethoughtmessagescount[i].$id==$scope.thoughtContainer[sample]._id)
+                            {
+                                $scope.tempcomments=$scope.firethoughtmessagescount[i];
+                                break;
+                            }
+                            else
+                            {
+                                $scope.tempcomments="";
+                            }
+
+                        }
+                        $scope.loading=true;
+                    })
+
+                }
+            );
+
+        }
+
 
 
 

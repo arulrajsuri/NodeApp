@@ -1,4 +1,4 @@
-<h1>{{messagetitle}}</h1>
+<h2>{{messagetitle}}</h2>
 <div ng-controller="infoController" ng-init="display()">
     <div class="carousel slide" data-ride="carousel" id="panel-carousel" data-interval="false">
 
@@ -9,7 +9,7 @@
 
             <div class="item" ng-class="{active:!$index}" ng-repeat="x in thoughtContainer">
                 <div class="panel panel-info">
-                    <div class="panel-body" style="max-height: 300px; min-height: 300px;background-color: cornflowerblue;">
+                    <div class="panel-body" style="max-height: 300px; min-height: 300px;background-color: #d9534f; color: #fff;">
 
                         <div class="visible-lg visible-md">
                             <div class="message">
@@ -19,7 +19,7 @@
 
                         <div class="visible-xs">
                             <div class="message">
-                                <h5>{{x.messageData}}</h5>
+                                <h4>{{x.messageData}}</h4>
                             </div>
                         </div>
                         <!---->

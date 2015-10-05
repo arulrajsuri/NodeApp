@@ -108,17 +108,17 @@
                <span class="icon-bar"></span>
                <span class="icon-bar"></span>
             </button>
-               <a class="navbar-brand" href="#contact">WWW</a>
+               <a class="navbar-brand" href="#contact" ng-click="checkJumbo();" >WWW</a>
      </div> <!--End header -->
 
        <div class="collapse navbar-collapse" id="navbarCollapse">
 
          <ul class="nav navbar-nav">
-            <li><a href="#home">Home</a> </li>
+            <li><a href="#home" ng-click="checkJumbo();">Home</a> </li>
             <li><a href="#about" ng-click="checkJumbo()">About</a> </li>
             <li><a href="#contact" ng-click="checkJumbo()">Contact</a> </li>
          </ul>
-           <a href="#login"><button class="btn navbar-btn btn-warning pull-right" ng-click="adminToggle();">Admin</button></a>
+           <a href="#login"><button class="btn navbar-btn btn-warning pull-right" ng-click="adminToggle();" data-toggle="collapse">Admin</button></a>
         </div>  <!--End nav -->
 
    </div> <!--End container -->
