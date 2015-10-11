@@ -85,6 +85,7 @@ app.directive('display',function($timeout)
     directive.replace=true;
     directive.link=function(scope,element,attrs)
     {
+        console.log("invoking date");
      //   scope.display= $(element).datepicker();
         $(element).datepicker({
             dateFormat: 'mm/dd/yy',
@@ -323,6 +324,7 @@ app.controller("thoughtController", function ($scope,$http,$timeout,$firebaseArr
     $scope.messagetitle = MessageValues.thoughtData;
     $scope.thoughtContainer = "";
     $scope.messageLikes = "99";
+    $scope.messageDate="";
 
     $scope.$watch('firethoughtmessagescount',function(){
 
@@ -410,6 +412,10 @@ $scope.hiddenvalue;
     {
        // var sample=$('#hiddenvalue').val();
 //console.log(data);
+
+        var datevalue=$scope.thoughtContainer[data].messagePostedDate;
+        datevalue=datevalue.substring(0,datevalue.indexOf("T"));
+        $scope.messageDate=datevalue;
         $scope.messageLikes=$scope.thoughtContainer[data].messageLikes;
 
         for(var i=0;i<$scope.firethoughtmessagescount.length;i++)
@@ -436,6 +442,11 @@ $scope.hiddenvalue;
      //   alert($scope.thoughtContainer.length);
       //  alert("currentIndex::"+currentIndex);
         console.log("currentIndex::"+currentIndex);
+        var datevalue=$scope.thoughtContainer[currentIndex].messagePostedDate;
+        datevalue=datevalue.substring(0,datevalue.indexOf("T"));
+        $scope.messageDate=datevalue;
+
+
         $scope.messageLikes=$scope.thoughtContainer[currentIndex].messageLikes;
         console.log($scope.thoughtContainer[currentIndex].messageData);
         var messageid=$scope.thoughtContainer[currentIndex]._id;
@@ -464,6 +475,9 @@ $scope.hiddenvalue;
        // alert($scope.thoughtContainer.length);
         //alert("currentIndex::"+currentIndex);
         $scope.messageLikes=$scope.thoughtContainer[currentIndex].messageLikes;
+        var datevalue=$scope.thoughtContainer[currentIndex].messagePostedDate;
+        datevalue=datevalue.substring(0,datevalue.indexOf("T"));
+        $scope.messageDate=datevalue;
 console.log($scope.thoughtContainer[currentIndex].messageData);
 
         for(var i=0;i<$scope.firethoughtmessagescount.length;i++)
@@ -515,6 +529,10 @@ console.log($scope.thoughtContainer[currentIndex].messageData);
                 console.log($scope.thoughtContainer.length);
                 var sample=$('div.active').index()+1;
                 $scope.messageLikes=$scope.thoughtContainer[sample].messageLikes;
+
+                var datevalue=$scope.thoughtContainer[sample].messagePostedDate;
+                datevalue=datevalue.substring(0,datevalue.indexOf("T"));
+                $scope.messageDate=datevalue;
 
                /* data.forEach(function(value)
                     {
