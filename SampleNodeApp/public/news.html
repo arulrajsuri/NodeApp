@@ -85,6 +85,11 @@
         <span class="glyphicon glyphicon-thumbs-up">&nbsp;<span style="color:white;"><b>Likes</b></span>&nbsp;</span><span class="badge" ng-bind="messageLikes"></span>
     </buttton>
 
+    <h4 class="pull-right visible-lg visible-md visible-sm"><b>Posted Date:<span  ng-bind="messageDate"></span></b></h4>
+
+    <h6 class="visible-xs hidden-lg higgden-sm hidden-md"><b>Posted Date:<span  ng-bind="messageDate"></span></b></h6>
+
+
     <buttton class="btn btn-success btn-sm  visible-xs hidden-*" ng-click="addLikes()">
         <span class="glyphicon glyphicon-thumbs-up">&nbsp;<span style="color:white;"><b>Likes</b></span>&nbsp;</span><span class="badge" ng-bind="messageLikes"></span>
     </buttton>
@@ -118,7 +123,7 @@
         </div>
     </div>
 
-    <div class="panel-group col-lg-7  col-md-7 col-sm-7 col-lg-offset-3 col-md-offset-3 visible-lg visible-md text-justify">
+    <div class="panel-group col-lg-7  col-md-7 col-sm-7 col-lg-offset-3 col-md-offset-3 col-sm-offset-3 visible-lg visible-md visible-sm text-justify">
         <div class="panel panel-primary">
             <div class="panel-heading clearfix"> <input ng-model="name" style="color:black" type="text" id="nameInput" placeholder="enter your name..."></div>
             <div class="panel-body"> <textarea ng-model="msg" id="commentInput" placeholder="enter your Comment..."></textarea></div>
