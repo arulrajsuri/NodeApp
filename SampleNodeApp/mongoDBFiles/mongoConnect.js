@@ -1,5 +1,5 @@
 var mongoose=require('mongoose');
-mongoose.connect('mongodb://localhost/mydatabase');
+mongoose.connect('mongodb://herokuMongo:heroku123@ds045608.mongolab.com:45608/heroku_p55cpvzz');
 //mongodb://localhost/mydatabase
 //mongodb://herokuMongo:heroku123@ds045608.mongolab.com:45608/heroku_p55cpvzz
 //mongodb://herokuMongo:heroku123@ds045608.mongolab.com:45608/heroku_p55cpvzz
