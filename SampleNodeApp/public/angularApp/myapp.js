@@ -1679,7 +1679,7 @@ $scope.getwwwdata=function()
     $scope.wwwdatahide=false;
     $http(
         {
-            url: 'http://localhost:3000/api/posts?message=ViewData',
+            url: 'https://whatventwell.herokuapp.com/api/posts?message=ViewData',
             method: "GET"
         }
 
