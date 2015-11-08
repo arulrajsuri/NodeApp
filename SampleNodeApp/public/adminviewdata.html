@@ -1,0 +1,29 @@
+<div ng-controller="adminviewdataController">
+
+    <button class="btn btn-success btn-lg" ng-click="getwwwdata()">Fetch content</button>
+
+    <table border="1" ng-hide="wwwdatahide">
+        <tr>
+            <th style="text-align: center">Date</th>
+            <th style="text-align: center">Thought</th>
+            <th style="text-align: center">News</th>
+            <th style="text-align: center">Fun</th>
+            <th style="text-align: center">Info</th>
+            <th style="text-align: center">Message</th>
+        </tr>
+        <tr ng-repeat="x in wwwdisplaydata">
+            <td>{{x.messgdate}} </td>
+            <td><div style="width:150px;height: 200px;overflow: auto ">{{x.messgthought}}  </div>  </td>
+            <td><div style="width:150px;height: 200px;overflow: auto ">{{x.messgnews}}  </div>  </td>
+<!--            <td><div style="width:150px;height: 200px;overflow: auto ">{{x.messgfun}}  </div>  </td>-->
+            <td><div style="width:150px;height: 200px;overflow: auto "><img src={{imageurl.concat(x.messgfun.substring(8))}} ></div>  </td>
+            <td><div style="width:150px;height: 200px;overflow: auto ">{{x.messginfo}}  </div>  </td>
+            <td><div style="width:150px;height: 200px;overflow: auto ">{{x.messgmessage}}  </div>  </td>
+
+            <!--<td>{{x.messgnews}} </td>
+            <td>{{x.messgfun}} </td>
+            <td>{{x.messginfo}} </td>
+            <td>{{x.messgmessage}} </td>-->
+        </tr>
+    </table>
+</div>

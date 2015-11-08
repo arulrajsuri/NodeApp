@@ -55,6 +55,17 @@ app.config(function($routeProvider)
             }
         )
 
+            .when('/adminhome',{
+                templateUrl: 'adminhome.html',
+                controller: 'adminhomeController'
+            }
+        )
+
+            .when('/adminviewdata',{
+                templateUrl: 'adminviewdata.html',
+                controller: 'adminviewdataController'
+            }
+        )
             .when('/admin',{
                 templateUrl: 'admin.html',
                 controller: 'adminController'
@@ -293,7 +304,7 @@ var userval={
 console.log("length::"+data.length);
                 if(data.length>0)
                 {
-                    $location.path("/admin")
+                    $location.path("/adminhome")
                 }
                 else
                 {
@@ -1116,7 +1127,7 @@ app.controller("funController", function ($scope,$http,$timeout,$firebaseArray,M
     $scope.tempcomments;
     $scope.loading=false;
 
-    $scope.imageurl="http://res.cloudinary.com/whatventwell-herokuapps-com/image/upload/h_270,w_800/";
+    $scope.imageurl="http://res.cloudinary.com/whatventwell-herokuapps-com/image/upload/h_270,w_600/";
     $scope.xsimageurl="http://res.cloudinary.com/whatventwell-herokuapps-com/image/upload/h_270,w_250/";
     function getCommentsRef()
     {
@@ -1642,6 +1653,76 @@ app.controller("messageController", function ($scope,$http,$timeout,$firebaseArr
 
 
 });
+
+app.controller("adminhomeController",function($scope,$location)
+{
+$scope.adddata=function()
+{
+    $location.path("/admin");
+}
+    $scope.viewdata=function()
+    {
+        $location.path("/adminviewdata");
+    }
+}
+);
+
+app.controller("adminviewdataController",function($scope,$location,$http)
+{
+    $scope.wwwdata="";
+    $scope.wwwtempdata=[];
+    $scope.wwwdisplaydata=[];
+    $scope.wwwdatahide=true;
+    $scope.imageurl="http://res.cloudinary.com/whatventwell-herokuapps-com/image/upload/h_200,w_150/";
+$scope.getwwwdata=function()
+{
+    $scope.wwwdatahide=false;
+    $http(
+        {
+            url: 'http://localhost:3000/api/posts?message=ViewData',
+            method: "GET"
+        }
+
+    ).success(
+        function(data,status,headers,config) {
+            //alert("getdata successful::"+data);
+             $scope.wwwdata=data;
+            var m=0;
+            for(var i=0;i<$scope.wwwdata.length;i++)
+            {
+                if(m<5)
+                {
+                    if(m==0)
+                    {
+                        var postedDated=$scope.wwwdata[i].messagePostedDate;
+                        postedDated=postedDated.substring(0,postedDated.indexOf('T'));
+                        $scope.wwwtempdata.push(postedDated);
+                    }
+                    $scope.wwwtempdata.push($scope.wwwdata[i].messageData);
+                m++;
+                }
+                else
+                {
+                    var wwwobj={};
+                    wwwobj.messgdate=$scope.wwwtempdata[0];
+                    wwwobj.messgthought=$scope.wwwtempdata[1];
+                    wwwobj.messgnews=$scope.wwwtempdata[2];
+                    wwwobj.messgfun=$scope.wwwtempdata[3];
+                    wwwobj.messginfo=$scope.wwwtempdata[4];
+                    wwwobj.messgmessage=$scope.wwwtempdata[5];
+                    $scope.wwwdisplaydata.push(wwwobj);
+                    $scope.wwwtempdata.length=0;
+                    m=0;
+                }
+            }
+
+            console.log("datareceivedd::"+$scope.wwwdata.length);
+        }
+    )
+
+}
+}
+);
 
 
 app.controller("adminController", function ($rootScope,$http,$scope,MessageValues) {

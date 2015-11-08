@@ -48,29 +48,52 @@ console.log(req.body.messageID);
 
 )
 
+/*router.route('/viewData').get(
+    function(req,res)
+    {
+        req.query.
+    }
+);*/
+
+
 router.route('/posts').get(
     function(req,res)
     {
 console.log("Request Paramater::"+req.query.message);
         var message =req.query.message;
-        var messageObject;
-        var messagequery=Message.find({'messageType':message});
-        messagequery.sort('-messagePostedDate');
-        messagequery.select('_id messageType messageData messageLikes messagePostedDate');
-        messagequery.exec(
-            function(err,messages)
-            {
-                /*res.header("Access-Control-Allow-Origin", "*");
-                res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With");
-                res.header("Access-Control-Allow-Methods", "GET, PUT, POST");*/
-                res.send(messages);
-            }
-        )
-        //console.log("messageObject::"+messageObject.length);
-    //res.send(messageObject);
+        if(message=='ViewData')
+        {
+            var messagequery=Message.find();
+            messagequery.sort('-messagePostedDate');
+            messagequery.select('_id messageType messageData messageLikes messagePostedDate');
+            messagequery.exec(
+                function(err,messages)
+                {
+                    res.send(messages);
+                }
+            )
+        }
+        else
+        {
+            var messageObject;
+            var messagequery=Message.find({'messageType':message});
+            messagequery.sort('-messagePostedDate');
+            messagequery.select('_id messageType messageData messageLikes messagePostedDate');
+            messagequery.exec(
+                function(err,messages)
+                {
+                    /*res.header("Access-Control-Allow-Origin", "*");
+                     res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With");
+                     res.header("Access-Control-Allow-Methods", "GET, PUT, POST");*/
+                    res.send(messages);
+                }
+            )
+            //console.log("messageObject::"+messageObject.length);
+            //res.send(messageObject);
+        }
+
     }
 );
-
 
 router.route('/posts').post(
     function(req,res)

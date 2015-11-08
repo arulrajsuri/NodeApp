@@ -50,6 +50,9 @@
             $("#datepicker").datepicker();
         });
 
+        $(document).ready(function(){
+            $("#div3").fadeIn(4000);
+        });
         /*(function () {
             setInterval(function(){
                 var hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
@@ -138,7 +141,15 @@
 
     <div class="container text-center">
     <h1 id="wwwtext" style="text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;">What Went Well</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nunc risus, semper a tempus sit amet, volutpat ut mauris. Morbi lacinia leo in dolor lobortis, vitae tempus odio vehicula. Suspendisse sit amet venenatis eros.</p>
+    <p>What Went Well is a portal that shares Inspirational Thoughts to start your day, stream of amazing facts, Jokes to bring smile on your face, Tech/application updates to explore your knowledge and news that focus on the "good" we can find in our world daily.
+<b id="div3" style="display: none">
+    "Place to start your day with positive energy
+    Place to learn and explore your knowledge"
+
+
+</b>
+
+    </p>
         <div class="row">
             <div class="scrolltarget">
             <div class="col-lg-12 col-lg-offset-0">
@@ -163,6 +174,7 @@
 <div class="col-lg-10 col-lg-offset-1">
     <ng-view class="col-lg-offset-0">
     </ng-view>
+
    <!-- <input type='text'  id="datepicker" />-->
 </div>
 </div>

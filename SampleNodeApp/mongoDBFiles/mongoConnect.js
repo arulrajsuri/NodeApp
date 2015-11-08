@@ -1,6 +1,7 @@
 var mongoose=require('mongoose');
-mongoose.connect('mongodb://herokuMongo:heroku123@ds045608.mongolab.com:45608/heroku_p55cpvzz');
+mongoose.connect('mongodb://localhost/mydatabase');
 //mongodb://localhost/mydatabase
+//mongodb://herokuMongo:heroku123@ds045608.mongolab.com:45608/heroku_p55cpvzz
 //mongodb://herokuMongo:heroku123@ds045608.mongolab.com:45608/heroku_p55cpvzz
 var db =mongoose.connection;
 
