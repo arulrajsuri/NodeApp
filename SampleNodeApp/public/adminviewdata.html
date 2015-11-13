@@ -10,16 +10,17 @@
             <th style="text-align: center">Fun</th>
             <th style="text-align: center">Info</th>
             <th style="text-align: center">Message</th>
+            <th style="text-align: center">Delete Data</th>
         </tr>
         <tr ng-repeat="x in wwwdisplaydata">
-            <td>{{x.messgdate}} </td>
+            <td>{{x.messgdate.substring(0,x.messgdate.indexOf('T'));}} </td>
             <td><div style="width:150px;height: 200px;overflow: auto ">{{x.messgthought}}  </div>  </td>
             <td><div style="width:150px;height: 200px;overflow: auto ">{{x.messgnews}}  </div>  </td>
 <!--            <td><div style="width:150px;height: 200px;overflow: auto ">{{x.messgfun}}  </div>  </td>-->
             <td><div style="width:150px;height: 200px;overflow: auto "><img src={{imageurl.concat(x.messgfun.substring(8))}} ></div>  </td>
             <td><div style="width:150px;height: 200px;overflow: auto ">{{x.messginfo}}  </div>  </td>
             <td><div style="width:150px;height: 200px;overflow: auto ">{{x.messgmessage}}  </div>  </td>
-
+            <td><button class="btn btn-danger" ng-click="deleteMessage(x.objarray)"><span class="glyphicon glyphicon-trash"></span></button>  </td>
             <!--<td>{{x.messgnews}} </td>
             <td>{{x.messgfun}} </td>
             <td>{{x.messginfo}} </td>

@@ -55,6 +55,52 @@ console.log(req.body.messageID);
     }
 );*/
 
+router.route('/delete').post(
+    function(req,res) {
+
+        req.body.myval.forEach(
+            function (value) {
+
+                Message.remove({'_id':value},
+                    function (err, message) {
+                        if(err)
+                        {
+                            console.log("error::"+err);
+                        }
+                        console.log("messages::"+message);
+                        console.log("err::"+err)
+                        //res.send("deleted");
+                    }
+                )
+                /*
+                 var message =req.query.message;
+                 console.log("executing***");
+                 var tempmessage=[];
+                 console.log("executing***************");
+                 for(var i=0;i<message.length;i++)
+                 {
+                 console.log("executing::"+message[i]);
+
+                 tempmessage[i]=mongoose.Schema.Types.ObjectId(message[i]);
+                 //tempmessage[i]=Message.Types.ObjectId(message[i]);
+                 }
+                 console.log("message.length::"+message.length);
+                 Message.remove({'_id':{$all:tempmessage}},
+                 function (err, message) {
+                 if(err)
+                 {
+                 console.log("error::"+err);
+                 }
+                 console.log("messages::"+message);
+                 console.log("err::"+err)
+                 //res.send("deleted");
+                 }
+                 )*/
+                // console.log("deletedataa::"+message);
+            }
+        )
+    }
+)
 
 router.route('/posts').get(
     function(req,res)

@@ -1674,9 +1674,29 @@ app.controller("adminviewdataController",function($scope,$location,$http)
     $scope.wwwdisplaydata=[];
     $scope.wwwdatahide=true;
     $scope.imageurl="http://res.cloudinary.com/whatventwell-herokuapps-com/image/upload/h_200,w_150/";
-$scope.getwwwdata=function()
+
+    $scope.deleteMessage=function(st)
+    {
+      //  console.log("datevalue::"+st);
+
+        $http(
+            {
+
+                url: 'https://whatventwell.herokuapp.com/api/delete',
+                method: "POST",
+                data:{myval: st}
+            }
+
+        ).success(
+            function(data,status,headers,config) {
+
+
+            }
+        )
+
+            }
+    $scope.getwwwdata=function()
 {
-    $scope.wwwdatahide=false;
     $http(
         {
             url: 'https://whatventwell.herokuapp.com/api/posts?message=ViewData',
@@ -1688,35 +1708,144 @@ $scope.getwwwdata=function()
             //alert("getdata successful::"+data);
              $scope.wwwdata=data;
             var m=0;
+            var wwwobj={};
+            var objarray=[];
             for(var i=0;i<$scope.wwwdata.length;i++)
             {
-                if(m<5)
+               // console.log("$scope.wwwdata["+i+"]"+$scope.wwwdata[i].messageType +" Data::"+$scope.wwwdata[i].messageData +" Date::"+$scope.wwwdata[i].messagePostedDate.substring(0,$scope.wwwdata[i].messagePostedDate.indexOf('T')));
+
+            /*    console.log("index::"+i);
+                console.log("*****BEGIN******");
+                console.log("messageType::"+$scope.wwwdata[i].messageType);
+                console.log("messageData::"+$scope.wwwdata[i].messageData);
+                console.log("messagePostedDate::"+$scope.wwwdata[i].messagePostedDate.substring(0,$scope.wwwdata[i].messagePostedDate.indexOf('T')));
+                console.log("m value::"+m);
+*/
+                if(m==0)
+                {
+                    var postedDated=$scope.wwwdata[i].messagePostedDate;
+                    //postedDated=postedDated.substring(0,postedDated.indexOf('T'));
+                    wwwobj.messgdate=postedDated;
+                }
+
+
+                switch($scope.wwwdata[i].messageType)
+                {
+                    case "T":
+                            wwwobj.messgthought=$scope.wwwdata[i].messageData;
+                        objarray.push($scope.wwwdata[i]._id);
+                        console.log($scope.wwwdata[i]._id);
+                        m++;
+                        break;
+                    case "N":
+                            wwwobj.messgnews = $scope.wwwdata[i].messageData;
+                        objarray.push($scope.wwwdata[i]._id);
+                        console.log($scope.wwwdata[i]._id);
+                        m++;
+                        break;
+                    case "F":
+                            wwwobj.messgfun = $scope.wwwdata[i].messageData;
+                        objarray.push($scope.wwwdata[i]._id);
+                        console.log($scope.wwwdata[i]._id);
+                        m++;
+                        break;
+                    case "I":
+                            wwwobj.messginfo = $scope.wwwdata[i].messageData;
+                        objarray.push($scope.wwwdata[i]._id);
+                        console.log($scope.wwwdata[i]._id);
+                        m++;
+                        break;
+                    case "M":
+                            wwwobj.messgmessage = $scope.wwwdata[i].messageData;
+                        objarray.push($scope.wwwdata[i]._id);
+                        console.log($scope.wwwdata[i]._id);
+                        m++;
+                        break;
+                }
+
+                if(m==5)
+                {
+                    console.log("array content::"+objarray);
+                    wwwobj.objarray=objarray;
+                    $scope.wwwdisplaydata.push(wwwobj);
+                    console.log("added");
+                    wwwobj={};
+                    m=0;
+                    objarray=[];
+                }
+
+
+                //console.log("*****END********");
+                /*if(m<5)
                 {
                     if(m==0)
                     {
                         var postedDated=$scope.wwwdata[i].messagePostedDate;
                         postedDated=postedDated.substring(0,postedDated.indexOf('T'));
-                        $scope.wwwtempdata.push(postedDated);
+                        wwwobj.messgdate=postedDated;
+                        //$scope.wwwtempdata.push(postedDated);
+                        //console.log("wwwobj.messgdate::"+wwwobj.messgdate);
                     }
-                    $scope.wwwtempdata.push($scope.wwwdata[i].messageData);
-                m++;
+                    //console.log("$scope.wwwdata[i].messageType::"+$scope.wwwdata[i].messageType);
+                    switch($scope.wwwdata[i].messageType)
+                    {
+                        case "T":
+                            wwwobj.messgthought=$scope.wwwdata[i].messageData;
+                            console.log("Thought found");
+                            console.log("*****END********");
+                            m++;
+                            break;
+                        case "N":
+                            wwwobj.messgnews=$scope.wwwdata[i].messageData;
+                            console.log("news found");
+                            console.log("*****END********");
+                            m++;
+                            break;
+                        case "F":
+                            wwwobj.messgfun=$scope.wwwdata[i].messageData;
+                            console.log("fun found");
+                            console.log("*****END********");
+                            m++;
+                            break;
+                        case "I":
+                            wwwobj.messginfo=$scope.wwwdata[i].messageData;
+                            console.log("info found");
+                            console.log("*****END********");
+                            m++;
+                            break;
+                        case "M":
+                            wwwobj.messgmessage=$scope.wwwdata[i].messageData;
+                            console.log("message found");
+                            console.log("*****END********");
+                      //      console.log("wwwobj.messgmessage::"+wwwobj.messgmessage + "  message count m::"+m);
+                            m++;
+                            break;
+                    }
+
+                  //  console.log("content i::"+i+"m::"+m+"::"+$scope.wwwdata[i].messageData);
+                    //$scope.wwwtempdata.push($scope.wwwdata[i].messageData);
+
                 }
                 else
                 {
-                    var wwwobj={};
-                    wwwobj.messgdate=$scope.wwwtempdata[0];
+
+                    /!*wwwobj.messgdate=$scope.wwwtempdata[0];
                     wwwobj.messgthought=$scope.wwwtempdata[1];
                     wwwobj.messgnews=$scope.wwwtempdata[2];
                     wwwobj.messgfun=$scope.wwwtempdata[3];
                     wwwobj.messginfo=$scope.wwwtempdata[4];
-                    wwwobj.messgmessage=$scope.wwwtempdata[5];
+                    wwwobj.messgmessage=$scope.wwwtempdata[5];*!/
                     $scope.wwwdisplaydata.push(wwwobj);
-                    $scope.wwwtempdata.length=0;
+                    //console.log("$scope.wwwdisplaydata::"+$scope.wwwdisplaydata.length);
+                    wwwobj={};
+                    //$scope.wwwtempdata.length=0;
                     m=0;
                 }
-            }
+*/            }
+            $scope.wwwdatahide=false;
 
             console.log("datareceivedd::"+$scope.wwwdata.length);
+            console.log("wwwobj::"+Object.keys(wwwobj).length);
         }
     )
 
