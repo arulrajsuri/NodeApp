@@ -1,11 +1,11 @@
 var app=angular.module("myapp",["ngRoute","firebase"]);
 
 app.value('MessageValues',{
-    thoughtData : "Thought for the Day",
+    thoughtData : "Learning for the Day",
     infoData : "Info for the Day",
     funData : "Fun for the Day",
     messageData : "Message for the Day",
-    newsData : "News for the Day",
+    newsData : "Fact for the Day",
     adminData: "admin console"
 });
 
