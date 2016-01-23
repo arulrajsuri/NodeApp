@@ -16,10 +16,10 @@
                     </label>
                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
                         <select class="form-control" id="message-type" ng-model="optionselected">
-                            <option value="M">Message for the Day</option>
+                            <option value="M">Learning for the Day</option>
                             <option value="I">Info for the Day</option>
                             <option value="F">Fun for the Day</option>
-                            <option value="N">News for the Day</option>
+                            <option value="N">Fact for the Day</option>
                             <option value="T">Thought for the Day</option>
                         </select>
                     </div>
@@ -110,7 +110,13 @@
                         <tr ng-repeat="x in messageContainer">
                             <td>{{$index+1}}</td>
                             <td><button class="btn btn-danger" ng-click="deleteMessage($index)"><span class="glyphicon glyphicon-trash"></span></button></td>
-                            <td>{{x.messageType}}</td>
+                     <div ng-switch="x.messageType">
+                         <td ng-switch-when="M">Learning</td>
+                         <td ng-switch-when="I">Info</td>
+                         <td ng-switch-when="F">Fun</td>
+                         <td ng-switch-when="N">Fact</td>
+                         <td ng-switch-when="T">Thought</td>
+                     </div>
                             <td>{{x.messageData}}</td>
                             <td>{{x.messageDate}}</td>
                         </tr>
