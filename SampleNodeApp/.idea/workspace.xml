@@ -77,7 +77,7 @@
       <file leaf-file-name="admin.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/admin.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.03046595">
+            <state vertical-scroll-proportion="0.3655914">
               <caret line="112" column="38" selection-start-line="112" selection-start-column="38" selection-end-line="112" selection-end-column="38" />
               <folding />
             </state>
@@ -689,12 +689,12 @@
       <workItem from="1452869084675" duration="903000" />
       <workItem from="1452870878528" duration="1899000" />
       <workItem from="1453564349855" duration="2434000" />
-      <workItem from="1453567017840" duration="84000" />
+      <workItem from="1453567017840" duration="903000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="311188000" />
+    <option name="totallyTimeSpent" value="312007000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1129,7 +1129,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/admin.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03046595">
+        <state vertical-scroll-proportion="0.3655914">
           <caret line="112" column="38" selection-start-line="112" selection-start-column="38" selection-end-line="112" selection-end-column="38" />
           <folding />
         </state>
