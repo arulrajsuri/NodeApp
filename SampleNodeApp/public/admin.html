@@ -110,7 +110,7 @@
                         <tr ng-repeat="x in messageContainer">
                             <td>{{$index+1}}</td>
                             <td><button class="btn btn-danger" ng-click="deleteMessage($index)"><span class="glyphicon glyphicon-trash"></span></button></td>
-                     <div ng-switch="x.messageType">
+                     <div ng-switch={{x.messageType}}>
                          <td ng-switch-when="M">Learning</td>
                          <td ng-switch-when="I">Info</td>
                          <td ng-switch-when="F">Fun</td>
