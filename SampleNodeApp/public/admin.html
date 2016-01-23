@@ -1,6 +1,9 @@
 <div ng-controller="adminController">
-<div class="container" ng-hide="adminHideValue" >
-    <div class="row">
+
+    <div class="container" ng-hide="adminHideValue" >
+
+
+        <div class="row">
         <div class="col-lg-10">
             <h1 class="visible-lg hidden-* text-center text-capitalize">{{messagetitle}}</h1>
             <h2 class="visible-md hidden-* text-center text-capitalize">{{messagetitle}}</h2>
@@ -110,20 +113,21 @@
                         <tr ng-repeat="x in messageContainer">
                             <td>{{$index+1}}</td>
                             <td><button class="btn btn-danger" ng-click="deleteMessage($index)"><span class="glyphicon glyphicon-trash"></span></button></td>
-                     <div ng-switch="x.messageType">
+                            <td ng-switch="x.messageType">
+                                <div ng-switch-when="M">Learning</div>
+                                <div ng-switch-when="I">Info</div>
+                                <div ng-switch-when="F">Fun</div>
+                                <div ng-switch-when="N">Fact</div>
+                                <div ng-switch-when="T">Thought</div>
 
-                         <div ng-switch-when="M"><td>Learning</td></div>
-                         <div ng-switch-when="I"><td>Info</td></div>
-                         <div ng-switch-when="F"><td>Fun</td></div>
-                         <div ng-switch-when="N"><td>Fact</td></div>
-                         <div ng-switch-when="T"><td>Thought</td></div>
+                            </td>
 
                          <!--<td ng-switch-when="M">Learning</td>
                          <td ng-switch-when="I">Info</td>
                          <td ng-switch-when="F">Fun</td>
                          <td ng-switch-when="N">Fact</td>
                          <td ng-switch-when="T">Thought</td>-->
-                     </div>
+
                             <td>{{x.messageData}}</td>
                             <td>{{x.messageDate}}</td>
                         </tr>
@@ -202,6 +206,7 @@
 <!--
 <button ng-click="showData()">showData</button>
 -->
+
 
 </div>
 

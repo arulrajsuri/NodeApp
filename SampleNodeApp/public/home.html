@@ -22,6 +22,8 @@ app.controller("myAppController",function($scope,$http)
             $scope.imageurl="http://res.cloudinary.com/whatventwell-herokuapps-com/image/upload/h_400,w_800/";
             $scope.samplevalue="METAIMG$bw4n7zmipiuqmsqbe7ua.jpg";
             $scope.empdata={};
+            $scope.samp="Message";
+            $scope.empobjarr=[{name:'xxx',dept:'IT'},{name:'yyy',dept:'CS'},{name:'zzz',dept:'EC'}]
             $scope.addtoMongo=function()
             {
              $scope.userdata=$scope.empdata.empname + " Added Successful";
@@ -63,6 +65,28 @@ app.controller("myAppController",function($scope,$http)
         <h1>Message</h1>
     </div>
 </div>
+
+    <div ng-switch="samp">
+        <div ng-switch-when="Message">
+            <h1>successffull</h1>
+        </div>
+
+    </div>
+modifiedd
+    <table>
+    <tr ng-repeat="val in empobjarr" >
+    <td>{{val.name}}</td>
+
+<td ng-switch on="val.dept">
+    <div ng-switch-when="IT">Information Technology</div>
+    <div ng-switch-when="CS">omputer science</div>
+    <div ng-switch-when="EC">Electronics communications</div>
+</td>
+
+
+    </tr>
+</table>
+
 
     <span ng-bind="samplevalue.length"></span>
 </div>
